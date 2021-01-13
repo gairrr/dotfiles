@@ -4,6 +4,7 @@ set hidden
 set noswapfile
 set incsearch hlsearch
 set updatetime=300
+set backspace=indent,eol,start
 set timeout timeoutlen=3000 ttimeoutlen=0
 set expandtab softtabstop=2 shiftwidth=2 shiftround
 
