@@ -47,7 +47,6 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
   augroup END
 endif
 
-" check the specified plugin is installed.
 function! s:is_plugged(name) abort
   if exists('g:plugs') && has_key(g:plugs, a:name) && isdirectory(g:plugs[a:name].dir)
     return 1
