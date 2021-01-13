@@ -135,7 +135,7 @@
         "basic.to_if_held_down_threshold_milliseconds" : 500
       },
       "rules" : [ {
-        "description" : "Initialization",
+        "description" : "initialization",
         "manipulators" : [ {
           "from" : {
             "key_code" : "right_command"
@@ -220,7 +220,7 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "Emacs-like key bindings",
+        "description" : "emacs-like key bindings",
         "manipulators" : [ {
           "from" : {
             "key_code" : "b",
@@ -351,7 +351,7 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "Select_en when I need",
+        "description" : "select_en when I need",
         "manipulators" : [ {
           "from" : {
             "key_code" : "escape"
@@ -457,7 +457,7 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "Launch apps",
+        "description" : "launch apps",
         "manipulators" : [ {
           "from" : {
             "key_code" : "a",

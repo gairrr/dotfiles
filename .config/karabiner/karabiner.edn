@@ -21,7 +21,7 @@
        :select_en {:key :japanese_eisuu}}
  :templates {:open "open \"%s\""
              :opena "open -a \"%s\""}
- :main [{:des "Initialization"
+ :main [{:des "initialization"
          :rules [[:right_command :left_command]
                  [:right_control :left_control]
                  [:right_option :left_option]
@@ -30,7 +30,7 @@
                  [:##return_or_enter :left_control nil {:alone :return_or_enter}]
                  [:!TSj :select_jp]
                  [:!TSsemicolon :select_en]]}
-        {:des "Emacs-like key bindings"
+        {:des "emacs-like key bindings"
          :rules [:!emacs-bindings-disabled-apps
                  [:!T##b :left_arrow]
                  [:!T##n :down_arrow]
@@ -40,14 +40,14 @@
                  [:!T##h :delete_or_backspace]
                  [:!Tw :!Odelete_or_backspace]
                  [:!Tu :!Cdelete_or_backspace]]}
-        {:des "Select_en when I need"
+        {:des "select_en when I need"
          :rules [[:escape [:select_en :escape] :terminals]
                  [:!Topen_bracket [:select_en :escape] :terminals]
                  [:!To [:select_en :!To] :terminals]
                  [:!Tg [:select_en :!Tg] :terminals]
                  [:!Cl [:select_en :!Cl] :browsers]
                  [:!Ct [:select_en :!Ct] :browsers]]}
-        {:des "Launch apps"
+        {:des "launch apps"
          :rules [[:!Oa [:opena "iTerm.app"]]
                  [:!Oc [:opena "Google Chrome.app"]]
                  [:!Od [:opena "DeepL.app"]]
