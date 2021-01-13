@@ -1,3 +1,5 @@
 .config/gh/hosts.yml
 .config/karabiner/automatic_backups/*
 .trc
+.vim/autoload
+.vim/plugged
