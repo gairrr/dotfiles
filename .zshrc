@@ -9,6 +9,7 @@ export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 PROMPT="%~ %# "
 bindkey -d
 bindkey -e
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
 
 alias reload="exec $SHELL -l"
 
