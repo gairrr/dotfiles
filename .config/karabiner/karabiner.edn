@@ -42,7 +42,7 @@
                  [:!Tu :!Cdelete_or_backspace]]}
         {:des "select_en when I need"
          :rules [[:escape [:select_en :escape] :terminals]
-                 [:!Topen_bracket [:select_en :escape] :terminals]
+                 [:!Topen_bracket [:select_en :!Topen_bracket] :terminals]
                  [:!To [:select_en :!To] :terminals]
                  [:!Tg [:select_en :!Tg] :terminals]
                  [:!Cl [:select_en :!Cl] :browsers]
