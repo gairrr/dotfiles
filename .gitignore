@@ -1,9 +1,3 @@
-/*
-/.*
-
-!/.config
-!/.gitignore
-!/.vimrc
-!/.zshrc
-
-/.config/karabiner/automatic_backups
+.config/gh/hosts.yml
+.config/karabiner/automatic_backups/*
+.trc
