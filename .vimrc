@@ -110,16 +110,17 @@ if s:is_plugged('vim-molder')
     autocmd FileType molder nmap <buffer> h <plug>(molder-up)
     autocmd FileType molder nmap <buffer> l <plug>(molder-open)
     autocmd FileType molder nmap <buffer> . <plug>(molder-toggle-hidden)
+    autocmd FileType molder nnoremap <buffer><nowait> g gg
   augroup END
 endif
 
 if s:is_plugged('vim-molder-operations')
   augroup pi_molder_operations
     autocmd!
-    autocmd FileType molder nmap <buffer><nowait> d <plug>(molder-operations-mkdir)
-    autocmd FileType molder nmap <buffer> D <plug>(molder-operations-delete)
+    autocmd FileType molder nmap <buffer> m <plug>(molder-operations-newdir)
+    autocmd FileType molder nmap <buffer> d <plug>(molder-operations-delete)
     autocmd FileType molder nmap <buffer> r <plug>(molder-operations-rename)
-    autocmd FileType molder nnoremap <buffer> % :e %:p:h/
+    autocmd FileType molder nnoremap <buffer> n :e %:p:h/
   augroup END
 endif
 
