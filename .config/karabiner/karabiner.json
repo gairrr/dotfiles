@@ -376,7 +376,8 @@
           "to" : [ {
             "key_code" : "japanese_eisuu"
           }, {
-            "key_code" : "escape"
+            "key_code" : "open_bracket",
+            "modifiers" : [ "left_control" ]
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
@@ -466,7 +467,7 @@
             }
           },
           "to" : [ {
-            "shell_command" : "open -a \"iTerm.app\""
+            "shell_command" : "open -a \"Alacritty.app\""
           } ],
           "type" : "basic"
         }, {

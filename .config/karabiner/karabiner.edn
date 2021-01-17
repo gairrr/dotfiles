@@ -48,7 +48,7 @@
                  [:!Cl [:select_en :!Cl] :browsers]
                  [:!Ct [:select_en :!Ct] :browsers]]}
         {:des "launch apps"
-         :rules [[:!Oa [:opena "iTerm.app"]]
+         :rules [[:!Oa [:opena "Alacritty.app"]]
                  [:!Oc [:opena "Google Chrome.app"]]
                  [:!Od [:opena "DeepL.app"]]
                  [:!Of [:opena "Finder.app"]]
