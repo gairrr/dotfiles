@@ -4,3 +4,4 @@
 .trc
 .vim/autoload
 .vim/plugged
+.vim/pythonx/__pycache__
