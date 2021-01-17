@@ -9,6 +9,7 @@ vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
 no sea takimata sanctus est Lorem ipsum dolor sit amet."""
 endglobal
 
+context "get_comment_format()[0] != ';'"
 snippet ; "comment" bA
 `!p snip.rv = get_comment_format()[0]` ${0:${VISUAL}}`!p snip.rv = " " + get_comment_format()[2] if not is_simple_comment_format() else ""`
 endsnippet
