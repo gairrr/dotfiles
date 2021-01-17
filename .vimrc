@@ -163,6 +163,11 @@ augroup ft_none
   autocmd FileType none nnoremap <buffer> q :<c-u>q!<cr>
 augroup END
 
+augroup ft_gitcommit
+  autocmd!
+  autocmd FileType gitcommit nnoremap <buffer><silent> q :<c-u>wq<cr>
+augroup END
+
 augroup ft_help
   autocmd!
   autocmd FileType help nnoremap <buffer><silent> q :<c-u>q!<cr>
