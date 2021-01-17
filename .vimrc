@@ -5,7 +5,7 @@ set noswapfile
 set incsearch hlsearch
 set updatetime=300
 set backspace=indent,eol,start
-set timeout timeoutlen=3000 ttimeoutlen=0
+set timeout timeoutlen=3000 ttimeoutlen=100
 set expandtab softtabstop=2 shiftwidth=2 shiftround
 
 let g:did_install_default_menus = 1
