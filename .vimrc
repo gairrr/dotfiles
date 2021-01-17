@@ -32,6 +32,7 @@ let g:mapleader = ' '
 
 call plug#begin('~/.vim/plugged')
 Plug 'Shougo/context_filetype.vim'
+Plug 'SirVer/ultisnips'
 Plug 'arcticicestudio/nord-vim'
 Plug 'itchyny/vim-parenmatch'
 Plug 'kana/vim-operator-user'
@@ -136,6 +137,19 @@ if s:is_plugged('vim-textobj-entire')
   let g:textobj_entire_no_default_key_mappings = 1
   omap ie <plug>(textobj-entire-a)
   xmap ie <plug>(textobj-entire-a)
+endif
+
+if s:is_plugged('ultisnips')
+  let g:UltiSnipsEditSplit = 'vertical'
+  let g:UltiSnipsSnippetDirectories = ['~/.vim/ultisnips']
+  let g:UltiSnipsSnippetAuthor = 'gairrr'
+  nnoremap <silent> <leader>u :<c-u>UltiSnipsEdit<cr>
+  augroup pi_ultisnips
+    autocmd!
+    autocmd FileType snippets set expandtab
+    autocmd FileType scss nnoremap <buffer><silent> nnoremap <leader>u :<c-u>UltiSnipsEdit css<cr>
+    autocmd FileType scss nnoremap <buffer><silent> nnoremap <leader>U :<c-u>UltiSnipsEdit scss<cr>
+  augroup END
 endif
 
 nnoremap <silent> <leader>v :<c-u>vs $MYVIMRC<cr>
