@@ -67,6 +67,44 @@ function! s:set_ft_none() abort
   endif
 endfunction
 
+function! s:get_syn_id(transparent) abort
+  let synid = synID(line("."), col("."), 1)
+  if a:transparent
+    return synIDtrans(synid)
+  else
+    return synid
+  endif
+endfunction
+function! s:get_syn_attr(synid) abort
+  let name = synIDattr(a:synid, "name")
+  let ctermfg = synIDattr(a:synid, "fg", "cterm")
+  let ctermbg = synIDattr(a:synid, "bg", "cterm")
+  let guifg = synIDattr(a:synid, "fg", "gui")
+  let guibg = synIDattr(a:synid, "bg", "gui")
+  return {
+        \ "name": name,
+        \ "ctermfg": ctermfg,
+        \ "ctermbg": ctermbg,
+        \ "guifg": guifg,
+        \ "guibg": guibg}
+endfunction
+function! s:get_syn_info() abort
+  let baseSyn = s:get_syn_attr(s:get_syn_id(0))
+  echo "name: " . baseSyn.name .
+        \ " ctermfg: " . baseSyn.ctermfg .
+        \ " ctermbg: " . baseSyn.ctermbg .
+        \ " guifg: " . baseSyn.guifg .
+        \ " guibg: " . baseSyn.guibg
+  let linkedSyn = s:get_syn_attr(s:get_syn_id(1))
+  echo "link to"
+  echo "name: " . linkedSyn.name .
+        \ " ctermfg: " . linkedSyn.ctermfg .
+        \ " ctermbg: " . linkedSyn.ctermbg .
+        \ " guifg: " . linkedSyn.guifg .
+        \ " guibg: " . linkedSyn.guibg
+endfunction
+command! SyntaxInfo call s:get_syn_info()
+
 if exists('&termguicolors')
   set termguicolors
   if exists('$TMUX')
@@ -106,21 +144,21 @@ if s:is_plugged('vim-molder')
   let g:molder_show_hidden = 1
   augroup pi_molder
     autocmd!
-    autocmd FileType molder nnoremap <buffer> / /\c
     autocmd FileType molder nmap <buffer> h <plug>(molder-up)
     autocmd FileType molder nmap <buffer> l <plug>(molder-open)
     autocmd FileType molder nmap <buffer> . <plug>(molder-toggle-hidden)
     autocmd FileType molder nnoremap <buffer><nowait> g gg
+    autocmd FileType molder nnoremap <buffer> / /\c
   augroup END
 endif
 
 if s:is_plugged('vim-molder-operations')
   augroup pi_molder_operations
     autocmd!
-    autocmd FileType molder nmap <buffer> m <plug>(molder-operations-newdir)
-    autocmd FileType molder nmap <buffer> d <plug>(molder-operations-delete)
+    autocmd FileType molder nmap <buffer><nowait> d <plug>(molder-operations-newdir)
+    autocmd FileType molder nmap <buffer> D <plug>(molder-operations-delete)
     autocmd FileType molder nmap <buffer> r <plug>(molder-operations-rename)
-    autocmd FileType molder nnoremap <buffer> n :e %:p:h/
+    autocmd FileType molder nnoremap <buffer> % :e %:p:h/
   augroup END
 endif
 
@@ -148,8 +186,8 @@ if s:is_plugged('ultisnips')
   augroup pi_ultisnips
     autocmd!
     autocmd FileType snippets set expandtab
-    autocmd FileType scss nnoremap <buffer><silent> nnoremap <leader>u :<c-u>UltiSnipsEdit css<cr>
-    autocmd FileType scss nnoremap <buffer><silent> nnoremap <leader>U :<c-u>UltiSnipsEdit scss<cr>
+    autocmd FileType scss nnoremap <buffer><silent> <leader>u :<c-u>UltiSnipsEdit css<cr>
+    autocmd FileType scss nnoremap <buffer><silent> <leader>U :<c-u>UltiSnipsEdit scss<cr>
   augroup END
 endif
 
