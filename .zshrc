@@ -12,10 +12,10 @@ bindkey -e
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
 
 alias reload="exec $SHELL -l"
-alias ls="exa -lF"
-alias lsa="exa -laF"
-alias lt="exa -TF"
-alias lta="exa -TaF"
+alias ls="exa -lF --group-directories-first"
+alias lsa="exa -laF --group-directories-first"
+alias lt="exa -TF --group-directories-first"
+alias lta="exa -TaF --group-directories-first"
 
 # (b)rew (i)nstall (f)ormula with fzf
 bif() {
