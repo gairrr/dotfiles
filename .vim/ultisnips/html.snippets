@@ -4,6 +4,37 @@ def make_end_label(text):
   return "<!-- " + text + " -->" if text else ""
 endglobal
 
+#  ___ templates ___
+
+snippet ! "html template" b
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="${2:Meta Description Here.}">
+  <meta name="format-detection" content="email=no, telephone=no, address=no">${3:
+  <meta name="robots" content="noindex, nofollow">}
+  <link rel="stylesheet" href="/assets/styles/style.css">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="/icon-192x192.png">
+  <link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon-180x180.png">
+  <link rel="canonical" href="https://example.com">
+  <script src="/assets/scripts/main.js" defer></script>
+  <title>${1:Title Here.}</title>
+</head>
+<body class="${4:page}">
+</body><!-- $4 -->
+</html>
+endsnippet
+
+# ___ document metadata ___
+
+# link
+# meta
+# style
+
 # ___ sections ___
 
 snippet article "article element" b
@@ -34,6 +65,8 @@ snippet "h([1-6])" "h1-h6 element" br
 <h`!p snip.rv = match.group(1)` class="$1">${0:${VISUAL}}</h`!p snip.rv = match.group(1)`>
 endsnippet
 
+# hgroup
+
 snippet header "header element" b
 <header class="$1">
   ${0:${VISUAL}}
@@ -58,6 +91,10 @@ snippet p "p element" b
 <p class="$1">${0:${VISUAL}}</p>
 endsnippet
 
+# hr
+# pre
+# blockquote
+
 snippet ol "ol element" b
 <ol class="$1">
   ${0:${VISUAL}}
@@ -69,6 +106,8 @@ snippet ul "ul element" b
   ${0:${VISUAL}}
 </ul>`!p snip.rv = make_end_label(t[1])`
 endsnippet
+
+# menu
 
 snippet li "li element" b
 <li class="$1">
@@ -124,13 +163,39 @@ snippet a "wrap with a element" b
 </a>`!p snip.rv = make_end_label(t[1])`
 endsnippet
 
+# em
+# strong
+
 snippet small "small element" w
 <small>${0:${VISUAL}}</small>
 endsnippet
 
+# s
+# cite
+# q
+# dfn
+# abbr
+# ruby
+# rt
+# rp
+# data
+
 snippet time "time element" w
 <time datetime="${VISUAL/\./-/g}">${0:${VISUAL}}</time>
 endsnippet
+
+# code
+# var
+# samp
+# kbd
+# sub
+# sup
+# i
+# b
+# u
+# mark
+# bdi
+# bdo
 
 snippet span "span element" w
 <span class="$1">${0:${VISUAL}}</span>
@@ -140,11 +205,31 @@ snippet "br" "br element" w
 <br$0>
 endsnippet
 
+# wbr
+
+# ___ edits ___
+
+# ins
+# del
+
 # ___ embedded content ___
+
+# picture
+# source
 
 snippet img "img element" w
 <img class="$1" src="/$2" alt="$3">
 endsnippet
+
+# iframe
+# embed
+# object
+# param
+# video
+# audio
+# track
+# map
+# area
 
 # ___ tabular data ___
 
@@ -153,6 +238,10 @@ snippet table "table element" b
   ${0:${VISUAL}}
 </table>`!p snip.rv = make_end_label(t[1])`
 endsnippet
+
+# caption
+# colgroup
+# col
 
 snippet tbody "tbody element" b
 <tbody class="$1">
@@ -194,10 +283,61 @@ snippet form "form element" b
 </form>`!p snip.rv = make_end_label(t[1])`
 endsnippet
 
+# label
+
 snippet input "input element" b
 <input type="${1:text}" name="${2:$1}" id="${3:$2}" class="$0">
 endsnippet
 
 snippet button "button element" b
 <button class="$1" type="${2:button}">${0:${VISUAL}}</button>
+endsnippet
+
+# select
+# datalist
+# optgroup
+# option
+# textarea
+# output
+# progress
+# meter
+# fieldset
+# legend
+
+# ___ interactive elements ___
+
+# details
+# summary
+# dialog
+
+# ___ scripting ___
+
+# script
+# noscript
+# template
+# slot
+# canvas
+
+# ___ attributes ___
+
+snippet " #" "id attribute" rwA
+ id="$0"
+endsnippet
+
+snippet " \." "class attribute" rwA
+ class="$0"
+endsnippet
+
+# ___ utilities ___
+
+priority 1
+snippet div "div" b
+<div>$0</div>
+endsnippet
+
+pre_expand "snip.buffer[snip.line] = snip.buffer[snip.line][:snip.cursor[1]]; snip.cursor.set(snip.line, -1)"
+snippet '<([a-z1-6]+) class="(.+)">' "expand a tag (with the end label if has class)" rb
+
+  $0
+</`!p snip.rv = match.group(1)`>`!p snip.rv = make_end_label(match.group(2))`
 endsnippet

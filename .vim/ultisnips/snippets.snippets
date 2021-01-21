@@ -18,8 +18,8 @@ snippet rv "rv" i
 snip.rv = ${0:${VISUAL}}
 endsnippet
 
-snippet "mg([0-9]?)" "match.group" ir
-`!p snip.rv = "match.group(" + match.group(1) + ")" if match.group(1) else "match.group(1)"`
+snippet mg "match.group" i
+match.group(${1:1})
 endsnippet
 
 snippet "([0-9]?)vis" "${VISUAL}" ir
