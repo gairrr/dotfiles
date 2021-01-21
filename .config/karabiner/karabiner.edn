@@ -17,7 +17,7 @@
 {:profiles
  {:Goku {:default true :sim 50 :delay 500 :alone 500 :held 500}}
  :tos {:cycle_app {:key :tab :modi [:left_command] :lazy true}
-       :select_jp {:key :japanese_kana}
+       :select_ja {:key :japanese_kana}
        :select_en {:key :japanese_eisuu}}
  :templates {:open "open \"%s\""
              :opena "open -a \"%s\""}
@@ -28,16 +28,16 @@
                  [:right_shift :left_shift]
                  [:##caps_lock :left_control nil {:alone :caps_lock}]
                  [:##return_or_enter :left_control nil {:alone :return_or_enter}]
-                 [:!TSj :select_jp]
+                 [:!TSj :select_ja]
                  [:!TSsemicolon :select_en]]}
         {:des "emacs-like key bindings"
          :rules [:!emacs-bindings-disabled-apps
-                 [:!T##b :left_arrow]
-                 [:!T##n :down_arrow]
-                 [:!T##p :up_arrow]
-                 [:!T##f :right_arrow]
-                 [:!T##m :return_or_enter]
-                 [:!T##h :delete_or_backspace]
+                 [:!T#Sb :left_arrow]
+                 [:!T#Sn :down_arrow]
+                 [:!T#Sp :up_arrow]
+                 [:!T#Sf :right_arrow]
+                 [:!T#Sm :return_or_enter]
+                 [:!T#Sh :delete_or_backspace]
                  [:!Tw :!Odelete_or_backspace]
                  [:!Tu :!Cdelete_or_backspace]]}
         {:des "select_en when I need"
@@ -48,12 +48,12 @@
                  [:!Cl [:select_en :!Cl] :browsers]
                  [:!Ct [:select_en :!Ct] :browsers]]}
         {:des "launch apps"
-         :rules [[:!Oa [:opena "Alacritty.app"]]
-                 [:!Oc [:opena "Google Chrome.app"]]
-                 [:!Od [:opena "DeepL.app"]]
-                 [:!Of [:opena "Finder.app"]]
-                 [:!Os [:opena "Alfred Preferences.app"]]
-                 [:!Ou [:open "/System/Library/PreferencePanes/Keyboard.prefPane"]]
+         :rules [[:!Oa [:select_en [:opena "Alacritty.app"]]]
+                 [:!Oc [:select_en [:opena "Google Chrome.app"]]]
+                 [:!Od [:select_en [:opena "DeepL.app"]]]
+                 [:!Of [:select_en [:opena "Finder.app"]]]
+                 [:!Os [:select_en [:opena "Alfred Preferences.app"]]]
+                 [:!Ou [:select_ja [:open "/System/Library/PreferencePanes/Keyboard.prefPane"]]]
                  ]}
        ]
  :applications {:terminals ["^com\\.apple\\.Terminal$",

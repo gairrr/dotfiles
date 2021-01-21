@@ -226,7 +226,7 @@
             "key_code" : "b",
             "modifiers" : {
               "mandatory" : [ "left_control" ],
-              "optional" : [ "any" ]
+              "optional" : [ "left_shift" ]
             }
           },
           "to" : [ {
@@ -242,7 +242,7 @@
             "key_code" : "n",
             "modifiers" : {
               "mandatory" : [ "left_control" ],
-              "optional" : [ "any" ]
+              "optional" : [ "left_shift" ]
             }
           },
           "to" : [ {
@@ -258,7 +258,7 @@
             "key_code" : "p",
             "modifiers" : {
               "mandatory" : [ "left_control" ],
-              "optional" : [ "any" ]
+              "optional" : [ "left_shift" ]
             }
           },
           "to" : [ {
@@ -274,7 +274,7 @@
             "key_code" : "f",
             "modifiers" : {
               "mandatory" : [ "left_control" ],
-              "optional" : [ "any" ]
+              "optional" : [ "left_shift" ]
             }
           },
           "to" : [ {
@@ -290,7 +290,7 @@
             "key_code" : "m",
             "modifiers" : {
               "mandatory" : [ "left_control" ],
-              "optional" : [ "any" ]
+              "optional" : [ "left_shift" ]
             }
           },
           "to" : [ {
@@ -306,7 +306,7 @@
             "key_code" : "h",
             "modifiers" : {
               "mandatory" : [ "left_control" ],
-              "optional" : [ "any" ]
+              "optional" : [ "left_shift" ]
             }
           },
           "to" : [ {
@@ -467,6 +467,8 @@
             }
           },
           "to" : [ {
+            "key_code" : "japanese_eisuu"
+          }, {
             "shell_command" : "open -a \"Alacritty.app\""
           } ],
           "type" : "basic"
@@ -478,6 +480,8 @@
             }
           },
           "to" : [ {
+            "key_code" : "japanese_eisuu"
+          }, {
             "shell_command" : "open -a \"Google Chrome.app\""
           } ],
           "type" : "basic"
@@ -489,6 +493,8 @@
             }
           },
           "to" : [ {
+            "key_code" : "japanese_eisuu"
+          }, {
             "shell_command" : "open -a \"DeepL.app\""
           } ],
           "type" : "basic"
@@ -500,6 +506,8 @@
             }
           },
           "to" : [ {
+            "key_code" : "japanese_eisuu"
+          }, {
             "shell_command" : "open -a \"Finder.app\""
           } ],
           "type" : "basic"
@@ -511,6 +519,8 @@
             }
           },
           "to" : [ {
+            "key_code" : "japanese_eisuu"
+          }, {
             "shell_command" : "open -a \"Alfred Preferences.app\""
           } ],
           "type" : "basic"
@@ -522,6 +532,8 @@
             }
           },
           "to" : [ {
+            "key_code" : "japanese_kana"
+          }, {
             "shell_command" : "open \"/System/Library/PreferencePanes/Keyboard.prefPane\""
           } ],
           "type" : "basic"
