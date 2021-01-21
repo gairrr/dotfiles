@@ -11,6 +11,10 @@ def is_visual_line_mode(snip):
 def is_visual_block_mode(snip):
     return snip.visual_mode == ""
 
+def remove_right_side_of_the_cursor(snip):
+    snip.buffer[snip.line] = snip.buffer[snip.line][:snip.cursor[1]]
+    snip.cursor.set(snip.line, -1)
+
 def _parse_comments(s):
     """ parse vim's comments option to extract comment format """
     i = iter(s.split(","))

@@ -330,14 +330,10 @@ endsnippet
 
 # ___ utilities ___
 
-priority 1
-snippet div "div" b
-<div>$0</div>
-endsnippet
-
-pre_expand "snip.buffer[snip.line] = snip.buffer[snip.line][:snip.cursor[1]]; snip.cursor.set(snip.line, -1)"
-snippet '<([a-z1-6]+) class="(.+)">' "expand a tag (with the end label if has class)" rb
+context "re.match('^\s*<[a-z1-6]+.*?>.*?</[a-z1-6]+>', snip.buffer[snip.line])"
+pre_expand "remove_right_side_of_the_cursor(snip)"
+snippet '<([a-z1-6]+).*?( class="(.*?)")?.*?>' "expand the tag (with the end label if has class value)" rb
 
   $0
-</`!p snip.rv = match.group(1)`>`!p snip.rv = make_end_label(match.group(2))`
+</`!p snip.rv = match.group(1)`>`!p snip.rv = make_end_label(match.group(3))`
 endsnippet
