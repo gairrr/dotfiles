@@ -1,7 +1,7 @@
 global !p
 from snippet_helpers import *
 def make_end_label(text):
-  return "<!-- " + text + " -->" if text else ""
+  return "<!-- /" + text + " -->" if text else ""
 endglobal
 
 #  ___ templates ___
@@ -197,12 +197,12 @@ endsnippet
 # bdi
 # bdo
 
-snippet span "span element" w
+snippet span "span element" i
 <span class="$1">${0:${VISUAL}}</span>
 endsnippet
 
-snippet "br" "br element" w
-<br$0>
+snippet "br" "br element" ri
+<br$1>
 endsnippet
 
 # wbr

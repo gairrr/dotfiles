@@ -33,8 +33,11 @@ let g:mapleader = ' '
 call plug#begin('~/.vim/plugged')
 Plug 'Shougo/context_filetype.vim'
 Plug 'SirVer/ultisnips'
-Plug 'arcticicestudio/nord-vim'
+Plug 'airblade/vim-rooter'
+" Plug 'arcticicestudio/nord-vim'
 Plug 'itchyny/vim-parenmatch'
+Plug 'junegunn/fzf.vim' | Plug '/usr/local/opt/fzf'
+Plug 'kaicataldo/material.vim'
 Plug 'kana/vim-operator-user'
 Plug 'kana/vim-repeat'
 Plug 'kana/vim-textobj-entire'
@@ -48,8 +51,8 @@ call plug#end()
 if !empty(glob('~/.vim/autoload/plug.vim'))
   augroup pi_plug
     autocmd!
-    autocmd BufRead $MYVIMRC nnoremap <buffer><silent> <leader>i :<c-u>w <bar> so $MYVIMRC <bar> PlugInstall<cr>
-    autocmd BufRead $MYVIMRC nnoremap <buffer><silent> <leader>c :<c-u>w <bar> so $MYVIMRC <bar> PlugClean<cr>
+    autocmd BufRead .vimrc nnoremap <buffer><silent> <leader>i :<c-u>w <bar> so $MYVIMRC <bar> PlugInstall<cr>
+    autocmd BufRead .vimrc nnoremap <buffer><silent> <leader>c :<c-u>w <bar> so $MYVIMRC <bar> PlugClean<cr>
   augroup END
 endif
 
@@ -127,13 +130,22 @@ function! s:highlight_additional() abort
   highlight NonText ctermbg=NONE guibg=NONE
   highlight LineNr ctermbg=NONE guibg=NONE
   highlight SignColumn ctermbg=NONE guibg=NONE
+  highlight link cssBraceError none
   if g:colors_name == 'nord'
     highlight Comment term=italic cterm=italic gui=italic
+  endif
+  if g:colors_name == 'material' && g:material_theme_style == 'palenight'
   endif
 endfunction
 
 if s:is_plugged('nord-vim')
   colorscheme nord
+endif
+
+if s:is_plugged('material.vim')
+  let g:material_terminal_italics = 1
+  let g:material_theme_style = 'palenight'
+  colorscheme material
 endif
 
 if s:is_plugged('vimdoc-ja')
@@ -191,6 +203,19 @@ if s:is_plugged('ultisnips')
   augroup END
 endif
 
+if s:is_plugged('vim-rooter')
+  let g:rooter_silent_chdir = 1
+  let g:rooter_resolve_links = 1
+  let g:rooter_change_directory_for_non_project_files = ''
+endif
+
+if s:is_plugged('fzf.vim')
+  let g:fzf_layout = { 'down': '10%' }
+  let g:fzf_preview_window = []
+  let g:fzf_buffers_jump = 1
+  nnoremap <silent><c-p> :<c-u>Files<cr>
+endif
+
 nnoremap <silent> <leader>v :<c-u>vs $MYVIMRC<cr>
 nnoremap <silent> <leader>. :<c-u>so $MYVIMRC<cr>
 nnoremap <silent> <leader>w :<c-u>up<cr>
@@ -200,6 +225,10 @@ nnoremap <silent> <leader>Q :<c-u>q!<cr>
 nnoremap 0 ^
 xnoremap 0 ^
 onoremap 0 ^
+nnoremap <silent> <c-w>H :<c-u>vs<cr>
+nnoremap <silent> <c-w>J :<c-u>bel sp<cr>
+nnoremap <silent> <c-w>K :<c-u>sp<cr>
+nnoremap <silent> <c-w>L :<c-u>bel vs<cr>
 cnoremap <c-b> <left>
 cnoremap <c-n> <down>
 cnoremap <c-p> <up>
@@ -224,4 +253,14 @@ augroup END
 augroup ft_help
   autocmd!
   autocmd FileType help nnoremap <buffer><silent> q :<c-u>q!<cr>
+augroup END
+
+augroup ft_css_scss
+  autocmd!
+  autocmd FileType css,scss nnoremap p p=']
+  autocmd FileType css,scss xnoremap p p=']
+  autocmd FileType css,scss nnoremap P P=']
+  autocmd FileType css,scss xnoremap P P=']
+  autocmd FileType css,scss nnoremap <silent> <c-a> <c-a>:w<cr>
+  autocmd FileType css,scss nnoremap <silent> <c-x> <c-x>:w<cr>
 augroup END

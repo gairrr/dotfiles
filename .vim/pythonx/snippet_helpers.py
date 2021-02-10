@@ -11,6 +11,15 @@ def is_visual_line_mode(snip):
 def is_visual_block_mode(snip):
     return snip.visual_mode == ""
 
+def update():
+    vim.eval('feedkeys(":up\<cr>")')
+
+def escape():
+    vim.eval('feedkeys("\<esc>")')
+
+def escape_hat_pos():
+    vim.eval('feedkeys("\<esc>^")')
+
 def remove_right_side_of_the_cursor(snip):
     snip.buffer[snip.line] = snip.buffer[snip.line][:snip.cursor[1]]
     snip.cursor.set(snip.line, -1)

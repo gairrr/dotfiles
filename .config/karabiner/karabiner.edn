@@ -51,9 +51,10 @@
          :rules [[:!Oa [:select_en [:opena "Alacritty.app"]]]
                  [:!Oc [:select_en [:opena "Google Chrome.app"]]]
                  [:!Od [:select_en [:opena "DeepL.app"]]]
+                 [:!Oe [:select_en [:opena "Visual Studio Code.app"]]]
                  [:!Of [:select_en [:opena "Finder.app"]]]
-                 [:!Os [:select_en [:opena "Alfred Preferences.app"]]]
-                 [:!Ou [:select_ja [:open "/System/Library/PreferencePanes/Keyboard.prefPane"]]]
+                 [:!Ok [:select_ja [:open "/System/Library/PreferencePanes/Keyboard.prefPane"]]]
+                 [:!Ov :!!v] ;; Vimac hint mode
                  ]}
        ]
  :applications {:terminals ["^com\\.apple\\.Terminal$",

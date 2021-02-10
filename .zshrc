@@ -1,6 +1,9 @@
 export LANG=en_US.UTF-8
 export EDITOR=vim
 export PAGER=less
+export BOX="$HOME/GoogleDrive"
+export DEV="$BOX/dev"
+export DOTFILES="$BOX/dotfiles"
 export GOKU_EDN_CONFIG_FILE="$HOME/.config/karabiner/karabiner.edn"
 export PATH="/usr/local/opt/curl/bin:$PATH"
 export PATH="/usr/local/opt/openldap/bin:$PATH"
@@ -16,6 +19,15 @@ alias ls="exa -lF --group-directories-first"
 alias lsa="exa -laF --group-directories-first"
 alias lt="exa -TF --group-directories-first"
 alias lta="exa -TaF --group-directories-first"
+alias mv="mv -vi"
+alias cp="cp -vi"
+alias rm="rm -v"
+alias ..="cd .."
+alias .2="cd ../.."
+alias .3="cd ../../.."
+alias dev="cd $DEV"
+alias zshrc="vim $DOTFILES/.zshrc"
+alias vimrc="vim $DOTFILES/.vimrc"
 
 # (b)rew (i)nstall (f)ormula with fzf
 bif() {

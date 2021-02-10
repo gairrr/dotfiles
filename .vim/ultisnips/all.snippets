@@ -11,7 +11,7 @@ endglobal
 
 context "get_comment_format()[0] != ';'"
 snippet ; "comment" bA
-`!p snip.rv = get_comment_format()[0]` ${0:${VISUAL}}`!p snip.rv = " " + get_comment_format()[2] if not is_simple_comment_format() else ""`
+`!p snip.rv = get_comment_format()[0]` ${1:${VISUAL}}`!p snip.rv = " " + get_comment_format()[2] if not is_simple_comment_format() else ""`
 endsnippet
 
 snippet "lorem(([1-4])?[0-9])?" "lorem ipsum" r
