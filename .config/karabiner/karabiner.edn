@@ -27,7 +27,7 @@
                  [:right_option :left_option]
                  [:right_shift :left_shift]
                  [:##caps_lock :left_control nil {:alone :caps_lock}]
-                 [:##return_or_enter :left_control nil {:alone :return_or_enter}]
+                 [:##return_or_enter :left_control :lazy true nil {:alone :return_or_enter}]
                  [:!TSj :select_ja]
                  [:!TSsemicolon :select_en]]}
         {:des "emacs-like key bindings"
@@ -48,10 +48,9 @@
                  [:!Cl [:select_en :!Cl] :browsers]
                  [:!Ct [:select_en :!Ct] :browsers]]}
         {:des "launch apps"
-         :rules [[:!Oa [:select_en [:opena "Alacritty.app"]]]
+         :rules [[:!Oa [:select_en [:opena "Visual Studio Code.app"]]]
                  [:!Oc [:select_en [:opena "Google Chrome.app"]]]
                  [:!Od [:select_en [:opena "DeepL.app"]]]
-                 [:!Oe [:select_en [:opena "Visual Studio Code.app"]]]
                  [:!Of [:select_en [:opena "Finder.app"]]]
                  [:!Ok [:select_ja [:open "/System/Library/PreferencePanes/Keyboard.prefPane"]]]
                  [:!Ov :!!v] ;; Vimac hint mode
