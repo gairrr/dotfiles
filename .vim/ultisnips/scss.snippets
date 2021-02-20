@@ -1,2 +1,10 @@
 extends css
 priority 50
+
+# ___ mixin ___
+
+snippet @mq "@mixin mediaQuery-up($breakpoint)" b
+@include mediaQuery-up(${1|tb,sm,pc,lg|}) {
+  $0
+}
+endsnippet

@@ -6,7 +6,8 @@ set incsearch hlsearch
 set updatetime=300
 set backspace=indent,eol,start
 set timeout timeoutlen=3000 ttimeoutlen=0
-set expandtab softtabstop=2 shiftwidth=2 shiftround
+set expandtab tabstop=2 softtabstop=2 shiftwidth=2 shiftround
+set iskeyword& iskeyword+=-
 
 let g:did_install_default_menus = 1
 let g:did_install_syntax_menu   = 1
@@ -28,13 +29,17 @@ let g:loaded_zip                = 1
 let g:loaded_zipPlugin          = 1
 let g:skip_loading_mswin        = 1
 
+if has('nvim')
+  let g:python_host_prog = '~/py2nvim/bin/python'
+  let g:python3_host_prog = '~/py3nvim/bin/python'
+endif
+
 let g:mapleader = ' '
 
 call plug#begin('~/.vim/plugged')
 Plug 'Shougo/context_filetype.vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-rooter'
-" Plug 'arcticicestudio/nord-vim'
 Plug 'itchyny/vim-parenmatch'
 Plug 'junegunn/fzf.vim' | Plug '/usr/local/opt/fzf'
 Plug 'kaicataldo/material.vim'
@@ -44,12 +49,13 @@ Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-user'
 Plug 'mattn/vim-molder'
 Plug 'mattn/vim-molder-operations'
+Plug 'tpope/vim-surround'
 Plug 'tyru/caw.vim'
 Plug 'vim-jp/vimdoc-ja'
 call plug#end()
 
-if !empty(glob('~/.vim/autoload/plug.vim'))
-  augroup pi_plug
+if !empty('~/.vim/autoload/plug.vim')
+  augroup plugin_plug
     autocmd!
     autocmd BufRead .vimrc nnoremap <buffer><silent> <leader>i :<c-u>w <bar> so $MYVIMRC <bar> PlugInstall<cr>
     autocmd BufRead .vimrc nnoremap <buffer><silent> <leader>c :<c-u>w <bar> so $MYVIMRC <bar> PlugClean<cr>
@@ -110,10 +116,12 @@ command! SyntaxInfo call s:get_syn_info()
 
 if exists('&termguicolors')
   set termguicolors
+
   if exists('$TMUX')
     let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
     let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
   endif
+
   if !has('nvim')
     let &t_ZH="\e[3m"
     let &t_ZR="\e[23m"
@@ -133,19 +141,20 @@ function! s:highlight_additional() abort
   highlight link cssBraceError none
   if g:colors_name == 'nord'
     highlight Comment term=italic cterm=italic gui=italic
-  endif
-  if g:colors_name == 'material' && g:material_theme_style == 'palenight'
+  elseif g:colors_name == 'material' && g:material_theme_style == 'palenight'
   endif
 endfunction
 
-if s:is_plugged('nord-vim')
-  colorscheme nord
-endif
+if !exists('g:vscode')
+  if s:is_plugged('nord-vim')
+    colorscheme nord
+  endif
 
-if s:is_plugged('material.vim')
-  let g:material_terminal_italics = 1
-  let g:material_theme_style = 'palenight'
-  colorscheme material
+  if s:is_plugged('material.vim')
+    let g:material_terminal_italics = 1
+    let g:material_theme_style = 'palenight'
+    colorscheme material
+  endif
 endif
 
 if s:is_plugged('vimdoc-ja')
@@ -154,8 +163,7 @@ endif
 
 if s:is_plugged('vim-molder')
   let g:molder_show_hidden = 1
-  augroup pi_molder
-    autocmd!
+  augroup plugin_molder
     autocmd FileType molder nmap <buffer> h <plug>(molder-up)
     autocmd FileType molder nmap <buffer> l <plug>(molder-open)
     autocmd FileType molder nmap <buffer> . <plug>(molder-toggle-hidden)
@@ -167,10 +175,10 @@ endif
 if s:is_plugged('vim-molder-operations')
   augroup pi_molder_operations
     autocmd!
-    autocmd FileType molder nmap <buffer><nowait> d <plug>(molder-operations-newdir)
+    autocmd FileType molder nmap <buffer><nowait> m <plug>(molder-operations-newdir)
     autocmd FileType molder nmap <buffer> D <plug>(molder-operations-delete)
     autocmd FileType molder nmap <buffer> r <plug>(molder-operations-rename)
-    autocmd FileType molder nnoremap <buffer> % :e %:p:h/
+    autocmd FileType molder nnoremap <buffer> n :e %:p:h/
   augroup END
 endif
 
@@ -222,9 +230,7 @@ nnoremap <silent> <leader>w :<c-u>up<cr>
 nnoremap <silent> <leader>W :<c-u>wa<cr>
 nnoremap <silent> <leader>q :<c-u>wq<cr>
 nnoremap <silent> <leader>Q :<c-u>q!<cr>
-nnoremap 0 ^
-xnoremap 0 ^
-onoremap 0 ^
+nnoremap <silent> <leader>- :<c-u>e %:h<cr>
 nnoremap <silent> <c-w>H :<c-u>vs<cr>
 nnoremap <silent> <c-w>J :<c-u>bel sp<cr>
 nnoremap <silent> <c-w>K :<c-u>sp<cr>
@@ -238,6 +244,11 @@ cnoremap <c-d> <del>
 cnoremap <c-k> <c-\>e getcmdpos() == 1 ?
       \ '' :
       \ getcmdline()[:getcmdpos()-2]<cr>
+
+augroup auto_remove_trailing_whitespace
+  autocmd!
+  autocmd BufWritePre * %s/\s\+$//e
+augroup END
 
 augroup ft_none
   autocmd!
@@ -255,7 +266,7 @@ augroup ft_help
   autocmd FileType help nnoremap <buffer><silent> q :<c-u>q!<cr>
 augroup END
 
-augroup ft_css_scss
+augroup ft_css
   autocmd!
   autocmd FileType css,scss nnoremap p p=']
   autocmd FileType css,scss xnoremap p p=']

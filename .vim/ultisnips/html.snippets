@@ -10,22 +10,15 @@ snippet ! "html template" b
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="${2:Meta Description Here.}">
-  <meta name="format-detection" content="email=no, telephone=no, address=no">${3:
-  <meta name="robots" content="noindex, nofollow">}
-  <link rel="stylesheet" href="/assets/styles/style.css">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/icon-192x192.png">
-  <link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon-180x180.png">
-  <link rel="canonical" href="https://example.com">
-  <script src="/assets/scripts/main.js" defer></script>
   <title>${1:Title Here.}</title>
+  <link rel="stylesheet" href="sass/style.css">
 </head>
-<body class="${4:page}">
-</body><!-- $4 -->
+<body>
+$0
+</body>
 </html>
 endsnippet
 
@@ -40,25 +33,25 @@ endsnippet
 snippet article "article element" b
 <article class="$1">
   ${0:${VISUAL}}
-</article>`!p snip.rv = make_end_label(t[1])`
+</article>
 endsnippet
 
 snippet section "section element" b
 <section class="$1">
   ${0:${VISUAL}}
-</section>`!p snip.rv = make_end_label(t[1])`
+</section>
 endsnippet
 
 snippet nav "nav element" b
 <nav class="$1">
   ${0:${VISUAL}}
-</nav>`!p snip.rv = make_end_label(t[1])`
+</nav>
 endsnippet
 
 snippet aside "aside element" b
 <aside class="$1">
   ${0:${VISUAL}}
-</aside>`!p snip.rv = make_end_label(t[1])`
+</aside>
 endsnippet
 
 snippet "h([1-6])" "h1-h6 element" br
@@ -70,19 +63,19 @@ endsnippet
 snippet header "header element" b
 <header class="$1">
   ${0:${VISUAL}}
-</header>`!p snip.rv = make_end_label(t[1])`
+</header>
 endsnippet
 
 snippet footer "footer element" b
 <footer class="$1">
   ${0:${VISUAL}}
-</footer>`!p snip.rv = make_end_label(t[1])`
+</footer>
 endsnippet
 
 snippet address "address element" b
 <address class="$1">
   ${0:${VISUAL}}
-</address>`!p snip.rv = make_end_label(t[1])`
+</address>
 endsnippet
 
 # ___ grouping content ___
@@ -98,13 +91,13 @@ endsnippet
 snippet ol "ol element" b
 <ol class="$1">
   ${0:${VISUAL}}
-</ol>`!p snip.rv = make_end_label(t[1])`
+</ol>
 endsnippet
 
 snippet ul "ul element" b
 <ul class="$1">
   ${0:${VISUAL}}
-</ul>`!p snip.rv = make_end_label(t[1])`
+</ul>
 endsnippet
 
 # menu
@@ -112,13 +105,13 @@ endsnippet
 snippet li "li element" b
 <li class="$1">
   ${0:${VISUAL}}
-</li>`!p snip.rv = make_end_label(t[1])`
+</li>
 endsnippet
 
 snippet dl "dl element" b
 <dl class="$1">
   ${0:${VISUAL}}
-</li>`!p snip.rv = make_end_label(t[1])`
+</li>
 endsnippet
 
 snippet dt "dt element" b
@@ -136,31 +129,26 @@ endsnippet
 snippet main "main element" b
 <main class="$1">
   ${0:${VISUAL}}
-</main>`!p snip.rv = make_end_label(t[1])`
+</main>
 endsnippet
 
-snippet div "div element" b
-<div class="$1">${0:${VISUAL}}</div>
-endsnippet
-
-context "is_visual_line_mode(snip)"
 snippet div "div element" b
 <div class="$1">
   ${0:${VISUAL}}
-</div>`!p snip.rv = make_end_label(t[1])`
+</div>
 endsnippet
 
 # ___ text-level semantics ___
 
 snippet a "a element" w
-<a class="$1" href="#$2">${0:${VISUAL}}</a>
+<a href="#$1" class="$2">${0:${VISUAL}}</a>
 endsnippet
 
 context "is_visual_line_mode(snip)"
 snippet a "wrap with a element" b
-<a class="$1" href="#$2">
+<a href="#$1" class="$2">
   ${0:${VISUAL}}
-</a>`!p snip.rv = make_end_label(t[1])`
+</a>
 endsnippet
 
 # em
@@ -218,7 +206,7 @@ endsnippet
 # source
 
 snippet img "img element" w
-<img class="$1" src="/$2" alt="$3">
+<img src="/$1" alt="$2" class="$3">
 endsnippet
 
 # iframe
@@ -236,7 +224,7 @@ endsnippet
 snippet table "table element" b
 <table class="$1">
   ${0:${VISUAL}}
-</table>`!p snip.rv = make_end_label(t[1])`
+</table>
 endsnippet
 
 # caption
@@ -246,25 +234,25 @@ endsnippet
 snippet tbody "tbody element" b
 <tbody class="$1">
   ${0:${VISUAL}}
-</tbody>`!p snip.rv = make_end_label(t[1])`
+</tbody>
 endsnippet
 
 snippet thead "thead element" b
 <thead class="$1">
   ${0:${VISUAL}}
-</thead>`!p snip.rv = make_end_label(t[1])`
+</thead>
 endsnippet
 
 snippet tfoot "tfoot element" b
 <tfoot class="$1">
   ${0:${VISUAL}}
-</tfoot>`!p snip.rv = make_end_label(t[1])`
+</tfoot>
 endsnippet
 
 snippet tr "tr element" b
 <tr class="$1">
   ${0:${VISUAL}}
-</tr>`!p snip.rv = make_end_label(t[1])`
+</tr>
 endsnippet
 
 snippet td "td element" b
@@ -280,7 +268,7 @@ endsnippet
 snippet form "form element" b
 <form class="$1">
   ${0:${VISUAL}}
-</form>`!p snip.rv = make_end_label(t[1])`
+</form>
 endsnippet
 
 # label
@@ -332,8 +320,16 @@ endsnippet
 
 context "re.match('^\s*<[a-z1-6]+.*?>.*?</[a-z1-6]+>', snip.buffer[snip.line])"
 pre_expand "remove_right_side_of_the_cursor(snip)"
-snippet '<([a-z1-6]+).*?( class="(.*?)")?.*?>' "expand the tag (with the end label if has class value)" rb
+snippet '<([a-z1-6]+).*?( class="(.*?)")?.*?>' "expand the tag" rb
 
   $0
-</`!p snip.rv = match.group(1)`>`!p snip.rv = make_end_label(match.group(3))`
+</`!p snip.rv = match.group(1)`>
 endsnippet
+
+# context "re.match('^\s*<[a-z1-6]+.*?>.*?</[a-z1-6]+>', snip.buffer[snip.line])"
+# pre_expand "remove_right_side_of_the_cursor(snip)"
+# snippet '<([a-z1-6]+).*?( class="(.*?)")?.*?>' "expand the tag (with the end label if has class value)" rb
+
+#   $0
+# </`!p snip.rv = match.group(1)`>`!p snip.rv = make_end_label(match.group(3))`
+# endsnippet

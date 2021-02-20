@@ -1,5 +1,15 @@
 [user]
-	name = gairrr
+	name = Gai
 	email = gairrr.jp@gmail.com
 [init]
 	defaultBranch = main
+# [core]
+# 	excludesfile = /Users/gairrr/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/gairrr/.stCommitMsg

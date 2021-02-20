@@ -360,15 +360,15 @@ snippet bgo "background-origin" b
 background-origin: $0
 endsnippet
 
-snippet bgc "background-clip" b
-background-clip: $0
-endsnippet
+# snippet bgc "background-clip" b
+# background-clip: $0
+# endsnippet
 
 snippet bga "background-attachment" b
 background-attachment: $0
 endsnippet
 
-snippet bgcl "background-color" b
+snippet bgc "background-color" b
 background-color: $0
 endsnippet
 
@@ -658,7 +658,7 @@ elif flag == "b":
   rgb = "0,0,255"
 else:
   rgb = "0,0,0"
-`$0/* debug */ border: 1px solid rgba(`!p snip.rv = rgb`,.4); background-color: rgba(`!p snip.rv = rgb`,.2);
+`$0/* debug */ background-color: rgba(`!p snip.rv = rgb`,.2);
 endsnippet
 
 snippet "([+-]?(?:\d+\.?\d*|\.\d+))(px|em|rem)([per])" "convert units" rwA
