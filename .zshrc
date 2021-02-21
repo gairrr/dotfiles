@@ -28,18 +28,26 @@ alias lta="exa -TaF --group-directories-first"
 # add flags
 alias mv="mv -vi"
 alias cp="cp -vi"
-alias rm="rm -v"
+alias rm="gomi"
 
 # navigation
-alias ..="cd .."
-alias ...="cd ../.."
-alias .3="cd ../../.."
-alias .4="cd ../../../.."
-alias .5="cd ../../../../.."
+alias ..="\\cd .."
+alias ...="\\cd ../.."
+alias .3="\\cd ../../.."
+alias .4="\\cd ../../../.."
+alias .5="\\cd ../../../../.."
 
 ### ASDF ###
 
-test -r $HOME/.asdf/asdf.sh && . $HOME/.asdf/asdf.sh
+. $HOME/.asdf/asdf.sh
+
+# append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
 autoload -Uz compinit
 compinit
+
+### enhancd ###
+
+source ~/enhancd/init.sh
+

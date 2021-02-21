@@ -1,13 +1,15 @@
 [user]
-	name = Gai
+	name = gairrr
 	email = gairrr.jp@gmail.com
+[includeIf "gitdir:~/GoogleDrive/dev/lacicu/"]
+  path = ~/.gitconfig_lacicu
+[includeIf "gitdir:~/docker/base/"]
+  path = ~/.gitconfig_lacicu
 [init]
 	defaultBranch = main
-# [core]
-# 	excludesfile = /Users/gairrr/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
