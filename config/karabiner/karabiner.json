@@ -540,6 +540,24 @@
             "bundle_identifiers" : [ "^io\\.alacritty$" ]
           } ],
           "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "g",
+            "modifiers" : {
+              "mandatory" : [ "left_control" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "japanese_eisuu"
+          }, {
+            "key_code" : "g",
+            "modifiers" : [ "left_control" ]
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^io\\.alacritty$" ]
+          } ],
+          "type" : "basic"
         } ]
       }, {
         "description" : "browsers only settings",
@@ -618,11 +636,11 @@
           "from" : {
             "key_code" : "e",
             "modifiers" : {
-              "mandatory" : [ "left_command", "left_shift" ]
+              "mandatory" : [ "left_control", "left_shift" ]
             }
           },
           "to" : [ {
-            "modifiers" : [ "left_shift" ],
+            "modifiers" : [ "left_shift", "left_command" ],
             "key_code" : "right_arrow"
           } ],
           "conditions" : [ {
