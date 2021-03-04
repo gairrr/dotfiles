@@ -1,10 +1,4 @@
-.config/configstore
-.config/filezilla
-.config/gh/hosts.yml
-.config/karabiner/automatic_backups
-.trc
-.vim/autoload
-.vim/plugged
-.vim/pythonx/__pycache__
-.vim/ultisnips/sample*
-.tinypng
+config/configstore
+config/gh/hosts.yml
+config/karabiner/automatic_backups
+vim/plugged

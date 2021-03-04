@@ -1,0 +1,362 @@
+global !p
+from snippet_helpers import *
+endglobal
+
+# ============================================================================
+# templates
+# ============================================================================
+
+priority 1
+snippet "font([+-]?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?),([1-9]|ul|el|[lnrmb]|sb|eb|ub]),([+-]?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?),([+-]?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?),(#((?:[0-9a-fA-F]{1,2}){3}))" "font properties (for XD)" rb
+`!p
+xd_font_size =  match.group(1)
+xd_font_weight = match.group(2)
+xd_letter_spacing = match.group(3)
+xd_line_height = match.group(4)
+xd_color = match.group(5)
+
+# font size
+font_size = xd_font_size
+
+# font weight
+if xd_font_weight == "1" or xd_font_weight == "ul":
+    font_weight = "100"
+elif xd_font_weight == "2" or xd_font_weight == "el":
+    font_weight = "200"
+elif xd_font_weight == "3" or xd_font_weight == "l":
+    font_weight = "300"
+elif xd_font_weight == "4" or xd_font_weight == "n" or xd_font_weight == "r":
+    font_weight = "400"
+elif xd_font_weight == "5" or xd_font_weight == "m":
+    font_weight = "500"
+elif xd_font_weight == "6" or xd_font_weight == "sb":
+    font_weight = "600"
+elif xd_font_weight == "7" or xd_font_weight == "b":
+    font_weight = "700"
+elif xd_font_weight == "8" or xd_font_weight == "eb":
+    font_weight = "800"
+elif xd_font_weight == "9" or xd_font_weight == "ub":
+    font_weight = "900"
+else:
+    font_weight: "FIXME"
+
+# letter spacing
+letter_spacing = float(xd_letter_spacing) / 1000
+
+# line-height
+line_height = float(xd_line_height) / float(xd_font_size)
+
+# color
+color = xd_color`color: `!p snip.rv = color`;
+font-weight: `!p snip.rv = font_weight`;
+font-size: `!p snip.rv = font_size`px;
+line-height: `!p snip.rv = int(line_height) if line_height.is_integer() else round(line_height, 1)`;
+letter-spacing: `!p snip.rv = letter_spacing`em;
+endsnippet
+
+snippet flt "fluid typography" b
+font-size: calc(${1:minimum font size}px + (${2:maximum font size} - $1) * ((100vw - ${3:minimum viewport width}px) / (${4:maximum viewport width} - $3)));
+endsnippet
+
+# snippet flt "fluid typography with media query" b
+# font-size: calc(${1:minimum font size}px + (${2:$wide_width} - $1) * ((100vw - ${3:$tablet_width}) / (${4:$wide_width} - $3)));
+# endsnippet
+
+# ============================================================================
+# css properties
+# ============================================================================
+priority 0
+
+# ----------------------------------------------------------------------------
+# visual formatting model
+# ----------------------------------------------------------------------------
+
+snippet dn "display: none;" b
+display: none;
+endsnippet
+
+snippet db "display: block;" b
+display: block;
+endsnippet
+
+snippet df "display: flex;" b
+display: flex;
+endsnippet
+
+snippet fl "flex" b
+flex: $0
+endsnippet
+
+snippet fld "flex-direction" b
+flex-direction: $0
+endsnippet
+
+snippet flb "flex-basis" b
+flex-basis: $0
+endsnippet
+
+snippet flw "flex-wrap" b
+flex-wrap: $0
+endsnippet
+
+snippet jc "justify-content" b
+justify-content: $0
+endsnippet
+
+snippet ai "align-items" b
+align-items: $0
+endsnippet
+
+snippet aic "align-items: center" b
+align-items: center;
+endsnippet
+
+snippet ps "position" b
+position: $0
+endsnippet
+
+snippet psa "position: absolute" b
+position: absolute;
+endsnippet
+
+snippet psr "position: relative" b
+position: relative;
+endsnippet
+
+snippet psf "position: fixed" b
+position: fixed;
+endsnippet
+
+snippet op "oapcity" b
+opacity: $0
+endsnippet
+
+snippet tf "transform" b
+transform: $0
+endsnippet
+
+# ----------------------------------------------------------------------------
+# box model
+# ----------------------------------------------------------------------------
+
+snippet wi "width" b
+width: $0
+endsnippet
+
+snippet maw "max-width" b
+max-width: $0
+endsnippet
+
+snippet miw "min-width" b
+min-width: $0
+endsnippet
+
+snippet hi "height" b
+height: $0
+endsnippet
+
+snippet mah "max-height" b
+max-height: $0
+endsnippet
+
+snippet mih "min-height" b
+min-height: $0
+endsnippet
+
+snippet mt "margin-top" b
+margin-top: $0
+endsnippet
+
+snippet mr "margin-right" b
+margin-right: $0
+endsnippet
+
+snippet mra "margin-right: auto;" b
+margin-right: auto;
+endsnippet
+
+snippet mb "margin-bottom" b
+margin-bottom: $0
+endsnippet
+
+snippet "lhmb([+-]?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?),([+-]?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?),([+-]?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)" "margin-bottom (considering line-height) for XD" rb
+`!p
+xd_font_size = float(match.group(1))
+xd_line_height = float(match.group(2))
+xd_margin = float(match.group(3))
+line_height = round(xd_line_height / xd_font_size, 1)
+
+line_height_margin = xd_margin - ((xd_font_size * line_height - xd_font_size) / 2)
+`margin-bottom: `!p snip.rv = round(line_height_margin, 1)`px; // line-height考慮
+endsnippet
+
+snippet ml "margin-left" b
+margin-left: $0
+endsnippet
+
+snippet mla "margin-left: auto;" b
+margin-left: auto;
+endsnippet
+
+snippet pd "padding" b
+padding: $0
+endsnippet
+
+snippet pt "padding-top" b
+padding-top: $0
+endsnippet
+
+snippet pr "padding-right" b
+padding-right: $0
+endsnippet
+
+snippet pb "padding-bottom" b
+padding-bottom: $0
+endsnippet
+
+snippet pl "padding-left" b
+padding-left: $0
+endsnippet
+
+snippet bd "border" b
+border: $0
+endsnippet
+
+snippet bdrs "border-radius" b
+border-radius: $0
+endsnippet
+# ----------------------------------------------------------------------------
+# background
+# ----------------------------------------------------------------------------
+
+snippet bgi "background-image" b
+background-image: $0
+endsnippet
+
+snippet bgr "background-repeat" b
+background-repeat: $0
+endsnippet
+
+snippet bgp "background-position" b
+background-position: $0
+endsnippet
+
+snippet bgs "background-size" b
+background-size: $0
+endsnippet
+
+snippet "bg?c" "background-color" rb
+background-color: $0
+endsnippet
+
+# ----------------------------------------------------------------------------
+# font, text, and color
+# ----------------------------------------------------------------------------
+
+snippet cl "color" b
+color: $0
+endsnippet
+
+snippet fw "font-weight" b
+font-weight: $0;
+endsnippet
+
+snippet fwb "font-weight: bold(700);" b
+font-weight: 700;
+endsnippet
+
+snippet fwl "font-weight: light(300);" b
+font-weight: 300;
+endsnippet
+
+snippet fs "font-size" b
+font-size: $0
+endsnippet
+
+snippet lh  "line-height" b
+line-height: $0
+endsnippet
+
+snippet "lt?s" "letter-spacing" rb
+letter-spacing: $0
+endsnippet
+
+snippet td "text-decoration" b
+text-decoration: $0
+endsnippet
+
+snippet ta "text-align" b
+text-align: $0
+endsnippet
+
+snippet tac "text-align: center;" b
+text-align: center;
+endsnippet
+
+# ----------------------------------------------------------------------------
+# table
+# ----------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------
+# user interface
+# ----------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------
+# animation
+# ----------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------
+# other properties
+# ----------------------------------------------------------------------------
+
+# ============================================================================
+# selectors
+# ============================================================================
+
+# ============================================================================
+# at rules
+# ============================================================================
+
+# ============================================================================
+# utilities
+# ============================================================================
+
+snippet " ?{" "expand the block" riA
+ {
+  ${0:${VISUAL}}
+}
+endsnippet
+
+snippet "#((?:[0-9a-fA-F]{1,2}){3})" "hex color codes must be lowercase" rwA
+#`!p snip.rv = match.group(1).lower()`
+endsnippet
+
+post_jump "escape_hat_pos(); update();"
+snippet ",([rgb])" "debug code" rbA
+`!p
+flag = match.group(1)
+if flag == "r":
+  rgb = "255,0,0"
+elif flag == "g":
+  rgb = "0,255,0"
+elif flag == "b":
+  rgb = "0,0,255"
+else:
+  rgb = "0,0,0"
+`$0/* debug */ border: 1px solid rgba(`!p snip.rv = rgb`, 0.4); background-color: rgba(`!p snip.rv = rgb`, 0.2);
+endsnippet
+
+snippet "%?([+-]?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)[,/]([+-]?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)%?" "% calclator" rw
+`!p
+value_1 = float(match.group(1))
+value_2 = float(match.group(2))
+if value_1 >= value_2:
+  base_width = value_1
+  target_width = value_2
+else:
+  base_width = value_2
+  target_width = value_1
+
+percentage = target_width / base_width * 100
+``!p snip.rv = int(percentage) if percentage.is_integer() else round(percentage, 1)`%
+endsnippet

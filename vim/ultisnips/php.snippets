@@ -1,0 +1,25 @@
+extends html
+priority 50
+
+global !p
+from snippet_helpers import *
+endglobal
+
+# ============================================================================
+# html in php
+# ============================================================================
+
+snippet a "a element" w
+<a class="`!v GetFocusModule()`${1:Link}" href="<?php echo home_url(); ?>$2">${0:${VISUAL}}</a>
+endsnippet
+
+context "is_visual_line_mode(snip)"
+snippet a "wrap with a element" b
+<a class="`!v GetFocusModule()`${1:Link}" href="<?php echo home_url(); >$2">
+  ${0:${VISUAL}}
+</a>
+endsnippet
+
+snippet img "img element" w
+<img class="`!v GetFocusModule()`${1:Img}" src="<?php echo get_template_directory_uri(); ?>$2" alt="$3" width="$4" height="$5">
+endsnippet

@@ -1,0 +1,381 @@
+global !p
+from snippet_helpers import *
+def make_end_label(text):
+  return "<!-- /" + text + " -->" if text else ""
+endglobal
+
+# ============================================================================
+# templates
+# ============================================================================
+
+snippet ! "html template" b
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${1:Title Here.}</title>
+  <link rel="stylesheet" href="sass/style.css">
+</head>
+<body>
+$0
+</body>
+</html>
+endsnippet
+
+# ============================================================================
+# html elements
+# ============================================================================
+# ----------------------------------------------------------------------------
+# sections
+# ----------------------------------------------------------------------------
+
+snippet article "article element" b
+<article class="`!v GetFocusModule()`$1">
+  ${0:${VISUAL}}
+</article>
+endsnippet
+
+snippet section "section element" b
+<section class="`!v GetFocusModule()`$1">
+  ${0:${VISUAL}}
+</section>
+endsnippet
+
+snippet nav "nav element" b
+<nav class="`!v GetFocusModule()`${1:Nav}">
+  ${0:${VISUAL}}
+</nav>
+endsnippet
+
+snippet aside "aside element" b
+<aside class="`!v GetFocusModule()`$1">
+  ${0:${VISUAL}}
+</aside>
+endsnippet
+
+snippet "h([1-6])" "h1-h6 element" br
+<h`!p snip.rv = match.group(1)` class="`!v GetFocusModule()`${1:Title}">${0:${VISUAL}}</h`!p snip.rv = match.group(1)`>
+endsnippet
+
+# hgroup
+
+snippet header "header element" b
+<header class="`!v GetFocusModule()`$1">
+  ${0:${VISUAL}}
+</header>
+endsnippet
+
+snippet footer "footer element" b
+<footer class="`!v GetFocusModule()`$1">
+  ${0:${VISUAL}}
+</footer>
+endsnippet
+
+snippet address "address element" b
+<address class="`!v GetFocusModule()`$1">
+  ${0:${VISUAL}}
+</address>
+endsnippet
+
+# ----------------------------------------------------------------------------
+# grouping content
+# ----------------------------------------------------------------------------
+
+snippet p "p element" b
+<p class="`!v GetFocusModule()`${1:Text}">${0:${VISUAL}}</p>
+endsnippet
+
+# hr
+# pre
+# blockquote
+
+snippet ol "ol element" b
+<ol class="`!v GetFocusModule()`${1:List}">
+  ${0:${VISUAL}}
+</ol>
+endsnippet
+
+snippet ul "ul element" b
+<ul class="`!v GetFocusModule()`${1:List}">
+  ${0:${VISUAL}}
+</ul>
+endsnippet
+
+# menu
+
+snippet li "li element" b
+<li class="`!v GetFocusModule()`$1">
+  ${0:${VISUAL}}
+</li>
+endsnippet
+
+snippet dl "dl element" b
+<dl class="`!v GetFocusModule()`$1">
+  ${0:${VISUAL}}
+</li>
+endsnippet
+
+snippet dt "dt element" b
+<dt class="`!v GetFocusModule()`$1">${0:${VISUAL}}</dt>
+endsnippet
+
+snippet dd "dd element" b
+<dd class="`!v GetFocusModule()`$1">${0:${VISUAL}}</dd>
+endsnippet
+
+snippet figure "figure element" b
+<figure class="`!v GetFocusModule()`${1:ImgWrapper}">
+  ${0:${VISUAL}}
+</figure>
+endsnippet
+
+snippet main "main element" b
+<main class="`!v GetFocusModule()`$1">
+  ${0:${VISUAL}}
+</main>
+endsnippet
+
+snippet div "div element" b
+<div class="`!v GetFocusModule()`$1">
+  ${0:${VISUAL}}
+</div>
+endsnippet
+
+# ----------------------------------------------------------------------------
+# text-level semantics
+# ----------------------------------------------------------------------------
+
+snippet a "a element" w
+<a class="`!v GetFocusModule()`${1:Link}" href="$2">${0:${VISUAL}}</a>
+endsnippet
+
+context "is_visual_line_mode(snip)"
+snippet a "wrap with a element" b
+<a class="`!v GetFocusModule()`${1:Link}" href="$2">
+  ${0:${VISUAL}}
+</a>
+endsnippet
+
+# em
+# strong
+
+snippet small "small element" w
+<small>${0:${VISUAL}}</small>
+endsnippet
+
+# s
+# cite
+# q
+# dfn
+# abbr
+# ruby
+# rt
+# rp
+# data
+
+snippet time "time element" w
+<time datetime="${VISUAL/\./-/g}">${0:${VISUAL}}</time>
+endsnippet
+
+# code
+# var
+# samp
+# kbd
+# sub
+# sup
+# i
+# b
+# u
+# mark
+# bdi
+# bdo
+
+snippet span "span element" i
+<span class="`!v GetFocusModule()`$1">${0:${VISUAL}}</span>
+endsnippet
+
+snippet br "br element" i
+<br>
+endsnippet
+
+snippet brsp "br-sp" i
+<br class="br-sp">
+endsnippet
+
+snippet brtb "br-tb" i
+<br class="br-tb">
+endsnippet
+
+snippet brsm "br-sm" i
+<br class="br-sm">
+endsnippet
+
+snippet brpc "br-pc" i
+<br class="br-pc">
+endsnippet
+
+# wbr
+
+# ----------------------------------------------------------------------------
+# edits
+# ----------------------------------------------------------------------------
+
+# ins
+
+snippet del "del element" b
+<del class="`!v GetFocusModule()`$1">${0:${VISUAL}}</del>
+endsnippet
+
+# ----------------------------------------------------------------------------
+# embedded content
+# ----------------------------------------------------------------------------
+
+# picture
+# source
+
+snippet img "img element" w
+<img class="`!v GetFocusModule()`${1:Img}" src="$2" alt="$3" width="$4" height="$0">
+endsnippet
+
+# iframe
+# embed
+# object
+# param
+# video
+# audio
+# track
+# map
+# area
+
+# ----------------------------------------------------------------------------
+# tabular data
+# ----------------------------------------------------------------------------
+
+snippet table "table element" b
+<table class="`!v GetFocusModule()`$1">
+  ${0:${VISUAL}}
+</table>
+endsnippet
+
+# caption
+# colgroup
+# col
+
+snippet tbody "tbody element" b
+<tbody class="`!v GetFocusModule()`$1">
+  ${0:${VISUAL}}
+</tbody>
+endsnippet
+
+snippet thead "thead element" b
+<thead class="`!v GetFocusModule()`$1">
+  ${0:${VISUAL}}
+</thead>
+endsnippet
+
+snippet tfoot "tfoot element" b
+<tfoot class="`!v GetFocusModule()`$1">
+  ${0:${VISUAL}}
+</tfoot>
+endsnippet
+
+snippet tr "tr element" b
+<tr class="`!v GetFocusModule()`$1">
+  ${0:${VISUAL}}
+</tr>
+endsnippet
+
+snippet td "td element" b
+<td class="`!v GetFocusModule()`$1">${0:${VISUAL}}</td>
+endsnippet
+
+snippet th "th element" b
+<th class="`!v GetFocusModule()`$1">${0:${VISUAL}}</th>
+endsnippet
+
+snippet form "form element" b
+<form class="`!v GetFocusModule()`$1">
+  ${0:${VISUAL}}
+</form>
+endsnippet
+
+# label
+
+snippet input "input element" b
+<input type="${1:text}" name="${2:$1}" id="${3:$2}" class="$0">
+endsnippet
+
+snippet button "button element" b
+<button class="`!v GetFocusModule()`$1" type="${2:button}">${0:${VISUAL}}</button>
+endsnippet
+
+# select
+# datalist
+# optgroup
+# option
+# textarea
+# output
+# progress
+# meter
+# fieldset
+# legend
+
+# ----------------------------------------------------------------------------
+# interactive elements
+# ----------------------------------------------------------------------------
+
+# details
+# summary
+# dialog
+
+# ----------------------------------------------------------------------------
+# scripting
+# ----------------------------------------------------------------------------
+
+# script
+# noscript
+# template
+# slot
+# canvas
+
+# ============================================================================
+# attributes
+# ============================================================================
+
+snippet " #" "id attribute" rwA
+ id="$0"
+endsnippet
+
+snippet " \." "class attribute" rwA
+ class="$0"
+endsnippet
+
+snippet ff "font-family utility classes" w
+font-${1|GillSans,Futura,ShueiMGo,Avenir,NotoSans|}
+endsnippet
+
+# ============================================================================
+# utilities
+# ============================================================================
+
+snippet >; "end label" iA
+><!-- /`!v GetFocusModule()`$1 -->
+endsnippet
+
+context "re.match('^\s*<[a-z1-6]+.*?>.*?</[a-z1-6]+>', snip.buffer[snip.line])"
+pre_expand "remove_right_side_of_the_cursor(snip)"
+snippet '<([a-z1-6]+).*?( class="(.*?)")?.*?>' "expand the tag" rb
+
+  $0
+</`!p snip.rv = match.group(1)`>
+endsnippet
+
+# context "re.match('^\s*<[a-z1-6]+.*?>.*?</[a-z1-6]+>', snip.buffer[snip.line])"
+# pre_expand "remove_right_side_of_the_cursor(snip)"
+# snippet '<([a-z1-6]+).*?( class="(.*?)")?.*?>' "expand the tag (with the end label if has class value)" rb
+
+#   $0
+# </`!p snip.rv = match.group(1)`>`!p snip.rv = make_end_label(match.group(3))`
+# endsnippet

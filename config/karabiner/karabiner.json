@@ -135,52 +135,7 @@
         "basic.to_if_held_down_threshold_milliseconds" : 500
       },
       "rules" : [ {
-        "description" : "[global] ctrl-m to enter",
-        "manipulators" : [ {
-          "from" : {
-            "key_code" : "m",
-            "modifiers" : {
-              "mandatory" : [ "left_control" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "return_or_enter"
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
-        "description" : "[global] ctrl-i to tab",
-        "manipulators" : [ {
-          "from" : {
-            "key_code" : "i",
-            "modifiers" : {
-              "mandatory" : [ "left_control" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "tab"
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
-        "description" : "[global] return_or_enter to right_control",
-        "manipulators" : [ {
-          "to_if_alone" : [ {
-            "key_code" : "return_or_enter"
-          } ],
-          "from" : {
-            "key_code" : "return_or_enter",
-            "modifiers" : {
-              "optional" : [ "any" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "right_control"
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
-        "description" : "[global] japanese_eisuu to left_command",
+        "description" : "basic settings for macbook internal keyboard",
         "manipulators" : [ {
           "from" : {
             "key_code" : "japanese_eisuu",
@@ -191,53 +146,15 @@
           "to" : [ {
             "key_code" : "left_command"
           } ],
-          "type" : "basic"
-        } ]
-      }, {
-        "description" : "[global] caps_lock to left_option",
-        "manipulators" : [ {
-          "from" : {
-            "key_code" : "caps_lock",
-            "modifiers" : {
-              "optional" : [ "any" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "left_option"
+          "conditions" : [ {
+            "identifiers" : [ {
+              "product_id" : 634,
+              "vendor_id" : 1452
+            } ],
+            "type" : "device_if"
           } ],
           "type" : "basic"
-        } ]
-      }, {
-        "description" : "[global] fn to right_option",
-        "manipulators" : [ {
-          "from" : {
-            "key_code" : "fn",
-            "modifiers" : {
-              "optional" : [ "any" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "right_option"
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
-        "description" : "[global] international3 to grave_accent_and_tilde",
-        "manipulators" : [ {
-          "from" : {
-            "key_code" : "international3",
-            "modifiers" : {
-              "optional" : [ "left_shift" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "grave_accent_and_tilde"
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
-        "description" : "[global] japanese_kana to right_command",
-        "manipulators" : [ {
+        }, {
           "from" : {
             "key_code" : "japanese_kana",
             "modifiers" : {
@@ -245,13 +162,246 @@
             }
           },
           "to" : [ {
-            "key_code" : "right_command"
+            "key_code" : "left_command"
+          } ],
+          "conditions" : [ {
+            "identifiers" : [ {
+              "product_id" : 634,
+              "vendor_id" : 1452
+            } ],
+            "type" : "device_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "right_command",
+            "modifiers" : {
+              "optional" : [ "any" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "left_command"
+          } ],
+          "conditions" : [ {
+            "identifiers" : [ {
+              "product_id" : 634,
+              "vendor_id" : 1452
+            } ],
+            "type" : "device_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "right_shift",
+            "modifiers" : {
+              "optional" : [ "any" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "left_shift"
+          } ],
+          "conditions" : [ {
+            "identifiers" : [ {
+              "product_id" : 634,
+              "vendor_id" : 1452
+            } ],
+            "type" : "device_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "fn",
+            "modifiers" : {
+              "optional" : [ "any" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "left_option"
+          } ],
+          "conditions" : [ {
+            "identifiers" : [ {
+              "product_id" : 634,
+              "vendor_id" : 1452
+            } ],
+            "type" : "device_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "backslash",
+            "modifiers" : {
+              "optional" : [ "any" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "left_option"
+          } ],
+          "conditions" : [ {
+            "identifiers" : [ {
+              "product_id" : 634,
+              "vendor_id" : 1452
+            } ],
+            "type" : "device_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "to_if_alone" : [ {
+            "key_code" : "international3"
+          } ],
+          "from" : {
+            "key_code" : "caps_lock",
+            "modifiers" : {
+              "optional" : [ "any" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "left_command",
+            "modifiers" : [ "left_control", "left_option", "left_shift" ]
+          } ],
+          "conditions" : [ {
+            "identifiers" : [ {
+              "product_id" : 634,
+              "vendor_id" : 1452
+            } ],
+            "type" : "device_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "to_if_alone" : [ {
+            "key_code" : "international3"
+          } ],
+          "from" : {
+            "key_code" : "international1",
+            "modifiers" : {
+              "optional" : [ "any" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "left_command",
+            "modifiers" : [ "left_control", "left_option", "left_shift" ]
+          } ],
+          "conditions" : [ {
+            "identifiers" : [ {
+              "product_id" : 634,
+              "vendor_id" : 1452
+            } ],
+            "type" : "device_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "international3",
+            "modifiers" : {
+              "optional" : [ "any" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "backslash"
+          } ],
+          "conditions" : [ {
+            "identifiers" : [ {
+              "product_id" : 634,
+              "vendor_id" : 1452
+            } ],
+            "type" : "device_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "delete_or_backspace",
+            "modifiers" : {
+              "optional" : [ "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "grave_accent_and_tilde"
+          } ],
+          "conditions" : [ {
+            "identifiers" : [ {
+              "product_id" : 634,
+              "vendor_id" : 1452
+            } ],
+            "type" : "device_if"
           } ],
           "type" : "basic"
         } ]
       }, {
-        "description" : "[!terminals_and_vscode] ctrl-b/n/p/f to each arrow keys",
+        "description" : "return_or_enter to control when pressed with other keys",
         "manipulators" : [ {
+          "to_if_alone" : [ {
+            "key_code" : "return_or_enter"
+          } ],
+          "from" : {
+            "key_code" : "return_or_enter"
+          },
+          "to" : [ {
+            "key_code" : "left_control"
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "emacs-like settings",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "m",
+            "modifiers" : {
+              "mandatory" : [ "left_control" ],
+              "optional" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "return_or_enter"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "i",
+            "modifiers" : {
+              "mandatory" : [ "left_control" ],
+              "optional" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "tab"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^io\\.alacritty$" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "h",
+            "modifiers" : {
+              "mandatory" : [ "left_control" ],
+              "optional" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "delete_or_backspace"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^io\\.alacritty$" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "d",
+            "modifiers" : {
+              "mandatory" : [ "left_control" ],
+              "optional" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "delete_forward"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^io\\.alacritty$" ]
+          } ],
+          "type" : "basic"
+        }, {
           "from" : {
             "key_code" : "b",
             "modifiers" : {
@@ -263,7 +413,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.apple\\.Terminal$", "^com\\.googlecode\\.iterm2$", "^io\\.alacritty$", "^com\\.microsoft\\.VSCode$" ]
+            "bundle_identifiers" : [ "^io\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -278,7 +428,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.apple\\.Terminal$", "^com\\.googlecode\\.iterm2$", "^io\\.alacritty$", "^com\\.microsoft\\.VSCode$" ]
+            "bundle_identifiers" : [ "^io\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -293,7 +443,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.apple\\.Terminal$", "^com\\.googlecode\\.iterm2$", "^io\\.alacritty$", "^com\\.microsoft\\.VSCode$" ]
+            "bundle_identifiers" : [ "^io\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -308,32 +458,10 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.apple\\.Terminal$", "^com\\.googlecode\\.iterm2$", "^io\\.alacritty$", "^com\\.microsoft\\.VSCode$" ]
+            "bundle_identifiers" : [ "^io\\.alacritty$" ]
           } ],
           "type" : "basic"
-        } ]
-      }, {
-        "description" : "[!terminals] ctrl-u to delete_all_left",
-        "manipulators" : [ {
-          "from" : {
-            "key_code" : "u",
-            "modifiers" : {
-              "mandatory" : [ "left_control" ]
-            }
-          },
-          "to" : [ {
-            "modifiers" : [ "left_command" ],
-            "key_code" : "delete_or_backspace"
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.apple\\.Terminal$", "^com\\.googlecode\\.iterm2$", "^io\\.alacritty$" ]
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
-        "description" : "[!terminals] ctrl-w to delete_a_word",
-        "manipulators" : [ {
+        }, {
           "from" : {
             "key_code" : "w",
             "modifiers" : {
@@ -346,12 +474,28 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.apple\\.Terminal$", "^com\\.googlecode\\.iterm2$", "^io\\.alacritty$" ]
+            "bundle_identifiers" : [ "^io\\.alacritty$" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "u",
+            "modifiers" : {
+              "mandatory" : [ "left_control" ]
+            }
+          },
+          "to" : [ {
+            "modifiers" : [ "left_command" ],
+            "key_code" : "delete_or_backspace"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^io\\.alacritty$" ]
           } ],
           "type" : "basic"
         } ]
       }, {
-        "description" : "[global] ctrl-[ to escape",
+        "description" : "IME off if press escape or ctrl-[",
         "manipulators" : [ {
           "from" : {
             "key_code" : "escape"
@@ -377,10 +521,10 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "[global] IME off when I need",
+        "description" : "alacritty only settings",
         "manipulators" : [ {
           "from" : {
-            "key_code" : "y",
+            "key_code" : "o",
             "modifiers" : {
               "mandatory" : [ "left_control" ]
             }
@@ -388,30 +532,33 @@
           "to" : [ {
             "key_code" : "japanese_eisuu"
           }, {
-            "key_code" : "y",
+            "key_code" : "o",
             "modifiers" : [ "left_control" ]
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.apple\\.Terminal$", "^com\\.googlecode\\.iterm2$", "^io\\.alacritty$", "^com\\.microsoft\\.VSCode$" ]
+            "bundle_identifiers" : [ "^io\\.alacritty$" ]
           } ],
           "type" : "basic"
-        }, {
+        } ]
+      }, {
+        "description" : "browsers only settings",
+        "manipulators" : [ {
           "from" : {
             "key_code" : "t",
             "modifiers" : {
-              "mandatory" : [ "right_command" ]
+              "mandatory" : [ "left_command" ]
             }
           },
           "to" : [ {
             "key_code" : "japanese_eisuu"
           }, {
             "key_code" : "t",
-            "modifiers" : [ "right_command" ]
+            "modifiers" : [ "left_command" ]
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.apple\\.Safari$", "^com\\.google\\.Chrome$", "^org\\.mozilla\\.firefox$" ]
+            "bundle_identifiers" : [ "^com\\.google\\.Chrome$", "^com\\.brave\\.Browser$" ]
           } ],
           "type" : "basic"
         }, {
@@ -429,26 +576,127 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.apple\\.Safari$", "^com\\.google\\.Chrome$", "^org\\.mozilla\\.firefox$" ]
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "spacebar",
-            "modifiers" : {
-              "mandatory" : [ "left_option" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "japanese_eisuu"
-          }, {
-            "key_code" : "spacebar",
-            "modifiers" : [ "left_option" ]
+            "bundle_identifiers" : [ "^com\\.google\\.Chrome$", "^com\\.brave\\.Browser$" ]
           } ],
           "type" : "basic"
         } ]
       }, {
-        "description" : "[global] launch apps",
+        "description" : "chromiums only settings",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "r",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "modifiers" : [ "left_control", "left_shift" ],
+            "key_code" : "e"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.google\\.Chrome$", "^com\\.brave\\.Browser$" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "r",
+            "modifiers" : {
+              "mandatory" : [ "left_command", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "modifiers" : [ "left_control", "left_shift" ],
+            "key_code" : "e"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.google\\.Chrome$", "^com\\.brave\\.Browser$" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "e",
+            "modifiers" : {
+              "mandatory" : [ "left_command", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "modifiers" : [ "left_shift" ],
+            "key_code" : "right_arrow"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.google\\.Chrome$", "^com\\.brave\\.Browser$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "XD only settings",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "r"
+          },
+          "to" : [ {
+            "key_code" : "tab",
+            "modifiers" : [ "left_option" ]
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.adobe\\.xd$" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "a"
+          },
+          "to" : [ {
+            "key_code" : "left_command"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.adobe\\.xd$" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "left_control"
+          },
+          "to" : [ {
+            "key_code" : "left_command"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.adobe\\.xd$" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "left_shift"
+          },
+          "to" : [ {
+            "key_code" : "left_command"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.adobe\\.xd$" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "spacebar"
+          },
+          "to" : [ {
+            "key_code" : "left_option"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.adobe\\.xd$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "launch mode",
         "manipulators" : [ {
           "from" : {
             "key_code" : "a"
@@ -456,10 +704,10 @@
           "to" : [ {
             "key_code" : "japanese_eisuu"
           }, {
-            "shell_command" : "open -a \"Alacritty.app\""
+            "shell_command" : "open \"/Applications/Alacritty.app\""
           } ],
           "conditions" : [ {
-            "name" : "semicolon-mode",
+            "name" : "launch-mode",
             "value" : 1,
             "type" : "variable_if"
           } ],
@@ -471,13 +719,13 @@
           },
           "to" : [ {
             "set_variable" : {
-              "name" : "semicolon-mode",
+              "name" : "launch-mode",
               "value" : 1
             }
           }, {
             "key_code" : "japanese_eisuu"
           }, {
-            "shell_command" : "open -a \"Alacritty.app\""
+            "shell_command" : "open \"/Applications/Alacritty.app\""
           } ],
           "from" : {
             "simultaneous" : [ {
@@ -492,7 +740,7 @@
               "key_up_when" : "any",
               "to_after_key_up" : [ {
                 "set_variable" : {
-                  "name" : "semicolon-mode",
+                  "name" : "launch-mode",
                   "value" : 0
                 }
               } ]
@@ -505,10 +753,10 @@
           "to" : [ {
             "key_code" : "japanese_eisuu"
           }, {
-            "shell_command" : "open -a \"Google Chrome.app\""
+            "shell_command" : "open \"/Applications/Brave Browser.app\""
           } ],
           "conditions" : [ {
-            "name" : "semicolon-mode",
+            "name" : "launch-mode",
             "value" : 1,
             "type" : "variable_if"
           } ],
@@ -520,13 +768,13 @@
           },
           "to" : [ {
             "set_variable" : {
-              "name" : "semicolon-mode",
+              "name" : "launch-mode",
               "value" : 1
             }
           }, {
             "key_code" : "japanese_eisuu"
           }, {
-            "shell_command" : "open -a \"Google Chrome.app\""
+            "shell_command" : "open \"/Applications/Brave Browser.app\""
           } ],
           "from" : {
             "simultaneous" : [ {
@@ -541,7 +789,7 @@
               "key_up_when" : "any",
               "to_after_key_up" : [ {
                 "set_variable" : {
-                  "name" : "semicolon-mode",
+                  "name" : "launch-mode",
                   "value" : 0
                 }
               } ]
@@ -554,10 +802,10 @@
           "to" : [ {
             "key_code" : "japanese_eisuu"
           }, {
-            "shell_command" : "open -a \"DeepL.app\""
+            "shell_command" : "open \"/Applications/DeepL.app\""
           } ],
           "conditions" : [ {
-            "name" : "semicolon-mode",
+            "name" : "launch-mode",
             "value" : 1,
             "type" : "variable_if"
           } ],
@@ -569,13 +817,13 @@
           },
           "to" : [ {
             "set_variable" : {
-              "name" : "semicolon-mode",
+              "name" : "launch-mode",
               "value" : 1
             }
           }, {
             "key_code" : "japanese_eisuu"
           }, {
-            "shell_command" : "open -a \"DeepL.app\""
+            "shell_command" : "open \"/Applications/DeepL.app\""
           } ],
           "from" : {
             "simultaneous" : [ {
@@ -590,7 +838,7 @@
               "key_up_when" : "any",
               "to_after_key_up" : [ {
                 "set_variable" : {
-                  "name" : "semicolon-mode",
+                  "name" : "launch-mode",
                   "value" : 0
                 }
               } ]
@@ -603,10 +851,10 @@
           "to" : [ {
             "key_code" : "japanese_eisuu"
           }, {
-            "shell_command" : "open -a \"Finder.app\""
+            "shell_command" : "open \"/System/Library/CoreServices/Finder.app\""
           } ],
           "conditions" : [ {
-            "name" : "semicolon-mode",
+            "name" : "launch-mode",
             "value" : 1,
             "type" : "variable_if"
           } ],
@@ -618,13 +866,13 @@
           },
           "to" : [ {
             "set_variable" : {
-              "name" : "semicolon-mode",
+              "name" : "launch-mode",
               "value" : 1
             }
           }, {
             "key_code" : "japanese_eisuu"
           }, {
-            "shell_command" : "open -a \"Finder.app\""
+            "shell_command" : "open \"/System/Library/CoreServices/Finder.app\""
           } ],
           "from" : {
             "simultaneous" : [ {
@@ -639,7 +887,7 @@
               "key_up_when" : "any",
               "to_after_key_up" : [ {
                 "set_variable" : {
-                  "name" : "semicolon-mode",
+                  "name" : "launch-mode",
                   "value" : 0
                 }
               } ]
@@ -652,10 +900,10 @@
           "to" : [ {
             "key_code" : "japanese_eisuu"
           }, {
-            "shell_command" : "open -a \"Sourcetree.app\""
+            "shell_command" : "open \"/Applications/Sourcetree.app\""
           } ],
           "conditions" : [ {
-            "name" : "semicolon-mode",
+            "name" : "launch-mode",
             "value" : 1,
             "type" : "variable_if"
           } ],
@@ -667,13 +915,13 @@
           },
           "to" : [ {
             "set_variable" : {
-              "name" : "semicolon-mode",
+              "name" : "launch-mode",
               "value" : 1
             }
           }, {
             "key_code" : "japanese_eisuu"
           }, {
-            "shell_command" : "open -a \"Sourcetree.app\""
+            "shell_command" : "open \"/Applications/Sourcetree.app\""
           } ],
           "from" : {
             "simultaneous" : [ {
@@ -688,7 +936,7 @@
               "key_up_when" : "any",
               "to_after_key_up" : [ {
                 "set_variable" : {
-                  "name" : "semicolon-mode",
+                  "name" : "launch-mode",
                   "value" : 0
                 }
               } ]
@@ -696,15 +944,15 @@
           }
         }, {
           "from" : {
-            "key_code" : "x"
+            "key_code" : "s"
           },
           "to" : [ {
             "key_code" : "japanese_eisuu"
           }, {
-            "shell_command" : "open -a \"Adobe XD.app\""
+            "shell_command" : "open \"/Applications/Spark.app\""
           } ],
           "conditions" : [ {
-            "name" : "semicolon-mode",
+            "name" : "launch-mode",
             "value" : 1,
             "type" : "variable_if"
           } ],
@@ -716,19 +964,19 @@
           },
           "to" : [ {
             "set_variable" : {
-              "name" : "semicolon-mode",
+              "name" : "launch-mode",
               "value" : 1
             }
           }, {
             "key_code" : "japanese_eisuu"
           }, {
-            "shell_command" : "open -a \"Adobe XD.app\""
+            "shell_command" : "open \"/Applications/Spark.app\""
           } ],
           "from" : {
             "simultaneous" : [ {
               "key_code" : "semicolon"
             }, {
-              "key_code" : "x"
+              "key_code" : "s"
             } ],
             "simultaneous_options" : {
               "detect_key_down_uninterruptedly" : true,
@@ -737,7 +985,7 @@
               "key_up_when" : "any",
               "to_after_key_up" : [ {
                 "set_variable" : {
-                  "name" : "semicolon-mode",
+                  "name" : "launch-mode",
                   "value" : 0
                 }
               } ]
@@ -748,11 +996,11 @@
             "key_code" : "v"
           },
           "to" : [ {
-            "key_code" : "v",
-            "modifiers" : [ "left_command", "left_control", "left_option", "left_shift" ]
+            "modifiers" : [ "left_control", "left_shift", "left_option", "left_command" ],
+            "key_code" : "v"
           } ],
           "conditions" : [ {
-            "name" : "semicolon-mode",
+            "name" : "launch-mode",
             "value" : 1,
             "type" : "variable_if"
           } ],
@@ -764,12 +1012,12 @@
           },
           "to" : [ {
             "set_variable" : {
-              "name" : "semicolon-mode",
+              "name" : "launch-mode",
               "value" : 1
             }
           }, {
-            "key_code" : "v",
-            "modifiers" : [ "left_command", "left_control", "left_option", "left_shift" ]
+            "modifiers" : [ "left_control", "left_shift", "left_option", "left_command" ],
+            "key_code" : "v"
           } ],
           "from" : {
             "simultaneous" : [ {
@@ -784,12 +1032,78 @@
               "key_up_when" : "any",
               "to_after_key_up" : [ {
                 "set_variable" : {
-                  "name" : "semicolon-mode",
+                  "name" : "launch-mode",
                   "value" : 0
                 }
               } ]
             }
           }
+        }, {
+          "from" : {
+            "key_code" : "x"
+          },
+          "to" : [ {
+            "key_code" : "japanese_eisuu"
+          }, {
+            "shell_command" : "open \"/Applications/Adobe XD/Adobe XD.app\""
+          } ],
+          "conditions" : [ {
+            "name" : "launch-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "type" : "basic",
+          "parameters" : {
+            "basic.simultaneous_threshold_milliseconds" : 210
+          },
+          "to" : [ {
+            "set_variable" : {
+              "name" : "launch-mode",
+              "value" : 1
+            }
+          }, {
+            "key_code" : "japanese_eisuu"
+          }, {
+            "shell_command" : "open \"/Applications/Adobe XD/Adobe XD.app\""
+          } ],
+          "from" : {
+            "simultaneous" : [ {
+              "key_code" : "semicolon"
+            }, {
+              "key_code" : "x"
+            } ],
+            "simultaneous_options" : {
+              "detect_key_down_uninterruptedly" : true,
+              "key_down_order" : "strict",
+              "key_up_order" : "strict_inverse",
+              "key_up_when" : "any",
+              "to_after_key_up" : [ {
+                "set_variable" : {
+                  "name" : "launch-mode",
+                  "value" : 0
+                }
+              } ]
+            }
+          }
+        } ]
+      }, {
+        "description" : "alfred_or_spotlight",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "spacebar",
+            "modifiers" : {
+              "mandatory" : [ "left_option" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "japanese_eisuu"
+          }, {
+            "modifiers" : [ "left_option" ],
+            "key_code" : "spacebar"
+          } ],
+          "type" : "basic"
         } ]
       } ]
     },

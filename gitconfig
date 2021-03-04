@@ -1,10 +1,8 @@
 [user]
 	name = gairrr
 	email = gairrr.jp@gmail.com
-[includeIf "gitdir:~/GoogleDrive/dev/lacicu/"]
-  path = ~/.gitconfig_lacicu
-[includeIf "gitdir:~/docker/base/"]
-  path = ~/.gitconfig_lacicu
+[includeIf "gitdir:~/lacicu/"]
+  path = ~/GoogleDrive/gitconfig_lacicu
 [init]
 	defaultBranch = main
 [difftool "sourcetree"]

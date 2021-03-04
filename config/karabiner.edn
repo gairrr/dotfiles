@@ -1,0 +1,129 @@
+;; modifiers list
+;; !  | means madatory
+;; #  | means optional
+;; C  | left_command
+;; T  | left_control
+;; O  | left_option
+;; S  | left_shift
+;; F  | fn
+;; Q  | right_command
+;; W  | right_control
+;; E  | right_option
+;; R  | right_shift
+;; P  | caps_lock
+;; !! | mandatory command + control + optional + shift (hyper)
+;; ## | optional any
+
+{:profiles
+ {:Goku {:default true :sim 50 :delay 500 :alone 500 :held 500}}
+ :tos {
+       ;; apps & extensions
+       :alfred_or_spotlight [{:key :japanese_eisuu}
+                             {:key :spacebar :modi [:left_option]}]
+       :super_reloader {:key :e :modi [:left_control :left_shift]}
+       :vimac [{:key :v :modi [:left_control :left_shift :left_option :left_command]}]
+
+       ;; map
+       :smart_escape [{:key :japanese_eisuu}
+                      {:key :escape}]
+
+       ;; moving & edits
+       :delete_one_word  {:key :delete_or_backspace :modi [:left_option]}
+       :delete_all_left  {:key :delete_or_backspace :modi [:left_command]}
+       :select_all_right {:key :right_arrow :modi [:left_shift]}
+       }
+
+ :templates {:open "open \"%s\""
+             :opena "open -a \"%s\""}
+
+ :simlayers {:launch-mode {:key :semicolon}}
+
+ :main [{:des "basic settings for macbook internal keyboard"
+         :rules [:macbook-internal
+                 ;; modifiers
+                 [:##japanese_eisuu :left_command]
+                 [:##japanese_kana :left_command]
+                 [:##right_command :left_command]
+                 [:##right_shift :left_shift]
+                 [:##fn :left_option]
+                 [:##backslash :left_option]
+                 [:##caps_lock :!TSOleft_command nil {:alone :international3}]
+                 [:##international1 :!TSOleft_command nil {:alone :international3}]
+
+                 ;; remap
+                 [:##international3 :backslash]
+                 [:#Sdelete_or_backspace :grave_accent_and_tilde]
+                 ]}
+        {:des "return_or_enter to control when pressed with other keys"
+         :rules [[:return_or_enter :left_control nil {:alone :return_or_enter}]]}
+        {:des "emacs-like settings"
+         :rules [[:!T#Cm :return_or_enter]
+                 [:!T#Ci :tab                 :!emacs_disabled_apps]
+                 [:!T#Ch :delete_or_backspace :!emacs_disabled_apps]
+                 [:!T#Cd :delete_forward      :!emacs_disabled_apps]
+                 [:!Tb :left_arrow            :!emacs_disabled_apps]
+                 [:!Tn :down_arrow            :!emacs_disabled_apps]
+                 [:!Tp :up_arrow              :!emacs_disabled_apps]
+                 [:!Tf :right_arrow           :!emacs_disabled_apps]
+                 [:!Tw :delete_one_word       :!emacs_disabled_apps]
+                 [:!Tu :delete_all_left       :!emacs_disabled_apps]
+                 ]}
+        {:des "IME off if press escape or ctrl-["
+         :rules [[:escape [:japanese_eisuu :escape]]
+                  [:!Topen_bracket [:japanese_eisuu :escape]]]}
+        {:des "alacritty only settings"
+         :rules [:alacritty
+                 [:!To [:japanese_eisuu :!To]] ;; IME off when temporary normal mode in vim
+                 ]}
+        {:des "browsers only settings"
+         :rules [:browsers
+                 [:!Ct [:japanese_eisuu :!Ct]] ;; IME off when create a new tab
+                 [:!Cl [:japanese_eisuu :!Cl]] ;; IME off when focus to the addres bar
+                 ]}
+        {:des "chromiums only settings"
+         :rules [:chromiums
+                 [:!Cr :super_reloader]    ;; always super reloader
+                 [:!SCr :super_reloader]   ;; always super reloader
+                 [:!SCe :select_all_right] ;; fallback: cmd-shift-e is overwritten by super_reloader
+                 ]}
+        {:des "XD only settings"
+         :rules [:xd
+                 [:r :!Otab]                   ;; switch the window.
+                 [:a :left_command]            ;; select the most internal item.
+                 [:left_control :left_command] ;; select the most internal item.
+                 [:left_shift :left_command]   ;; select the most internal item.
+                 [:spacebar :left_option]      ;; measure the distance between items.
+                 ]}
+        {:des "launch mode"
+         :rules [:launch-mode
+                 [:a [:japanese_eisuu [:open "/Applications/Alacritty.app"]]]             ;; Alacritty
+                 [:c [:japanese_eisuu [:open "/Applications/Brave Browser.app"]]]         ;; Chrome (launch Brave)
+                 [:d [:japanese_eisuu [:open "/Applications/DeepL.app"]]]                 ;; DeepL
+                 [:f [:japanese_eisuu [:open "/System/Library/CoreServices/Finder.app"]]] ;; Finder
+                 [:g [:japanese_eisuu [:open "/Applications/Sourcetree.app"]]]            ;; Sourcetree
+                 [:s [:japanese_eisuu [:open "/Applications/Spark.app"]]]                 ;; Spark
+                 [:v  :vimac]                                                             ;; Vimac
+                 [:x [:japanese_eisuu [:open "/Applications/Adobe XD/Adobe XD.app"]]]     ;; XD
+                 ]}
+        {:des "alfred_or_spotlight"
+         :rules [[:!Ospacebar :alfred_or_spotlight]]}
+        ]
+ :devices {:macbook-internal [{:product_id 634 :vendor_id 1452}]}
+ :applications {
+                :alacritty           ["^io\\.alacritty$"],
+                :brave               ["^com\\.brave\\.Browser$"],
+                :chrome              ["^com\\.google\\.Chrome$"],
+                :deepl               ["^com\\.linguee\\.DeepLCopyTranslator$"],
+                :finder              ["^com\\.apple\\.finder$"],
+                :polypane            ["^com\\.firstversionist\\.polypane$"],
+                :sourcetree          ["^com\\.torusknot\\.SourceTreeNotMAS$"],
+                :spark               ["^com\\.readdle\\.smartemail-Mac$"],
+                :xd                  ["^com\\.adobe\\.xd$"],
+                :zeplin              ["^o\\.zeplin\\.osx$"],
+                :browsers            ["^com\\.google\\.Chrome$"
+                                      "^com\\.brave\\.Browser$"],
+                :chromiums           ["^com\\.google\\.Chrome$"
+                                      "^com\\.brave\\.Browser$"],
+                :emacs_disabled_apps ["^io\\.alacritty$"]
+                }
+ :simlayer-threshold 210}

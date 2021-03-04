@@ -1,0 +1,52 @@
+extends css
+priority 50
+
+# ============================================================================
+# variables
+# ============================================================================
+priority 40
+
+snippet tb "$tablet_width" i
+600
+endsnippet
+
+snippet sm "$small_width" i
+900
+endsnippet
+
+snippet pc "$desktop_width" i
+1168
+endsnippet
+
+snippet lg "$wide_width" i
+1379
+endsnippet
+
+# ============================================================================
+# mixins
+# ============================================================================
+priority 50
+
+snippet @tb "@include mediaQuery-up(tb)" b
+@include mediaQuery-up(tb) {
+  $0
+}
+endsnippet
+
+snippet @sm "@include mediaQuery-up(sm)" b
+@include mediaQuery-up(sm) {
+  $0
+}
+endsnippet
+
+snippet @pc "@include mediaQuery-up(pc)" b
+@include mediaQuery-up(pc) {
+  $0
+}
+endsnippet
+
+snippet @lg "@include mediaQuery-up(lg)" b
+@include mediaQuery-up(lg) {
+  $0
+}
+endsnippet
